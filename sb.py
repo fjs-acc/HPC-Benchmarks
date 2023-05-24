@@ -1141,11 +1141,15 @@ def get_spec(cfg_list,bench):
                 block = False
                 _[0]=_[0].rstrip()            
                 if _[1].find('Version')!=-1:
-                    spec = spec+'@'
+                    spec = spec+' @'
                 elif _[1].find('Compiler')!=-1:
-                    spec = spec+'%'
+                    spec = spec+' %'
+                ###NEW###
+                elif _[1].find('Flags')!=-1:
+                    spec = spec+' '
+                ###NEW###
                 else:
-                    spec=spec+'^'
+                    spec=spec+' ^'
             spec=spec+_[0]
         else:
             #we want to block further specification from the profile, if we don't even know the package name
