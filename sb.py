@@ -1132,7 +1132,7 @@ def get_spec(cfg_list,bench):
     spec = bench    
     for _ in cfg_list:      
         _ = _.split('[')
-        further_package_specification = _[1].find('Version')!=-1 or _[1].find('Compiler')!=-1      
+        further_package_specification = _[1].find('Version')!=-1 or _[1].find('Compiler')!=-1 or _[1].find('Flags')!=-1       
         if _[0].isspace()==False:
             if further_package_specification and block:
                 #we don't want to append these, since we don't even know the package name
