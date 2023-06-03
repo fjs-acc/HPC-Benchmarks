@@ -1783,7 +1783,9 @@ def build_batch(selected_profiles, bench_id, extra_args = ''):
     matplotlib_pth=find_matplot_python_hash()
     if len(matplotlib_pth)>2:
         batchtxt+='spack load python '+matplotlib_pth+'\n'
-        batchtxt+='sbatch --dependency=afterany:${id'+str(dependency_offset-1)+'##* } ' + build_plot(t_id,tag_id_switcher(bench_id),run_dir)     
+        ###NEW ADDITION###
+        batchtxt+='sbatch --wait --dependency=afterany:${id'+str(dependency_offset-1)+'##* } ' + build_plot(t_id,tag_id_switcher(bench_id),run_dir)     
+        ###NEW ADDITION###
     #Niederschreiben des Skripts & Rückgabe des entspr. Pfads hin
     file_w(run_dir+'batch.sh',batchtxt,'a')
     shell('chmod +x '+run_dir+'batch.sh')
