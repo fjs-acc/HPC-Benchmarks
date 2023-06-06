@@ -1132,6 +1132,7 @@ def get_spec(cfg_list,bench):
     spec = bench    
     for _ in cfg_list:      
         _ = _.split('[')
+        ###NEW ADDITION for flag support###
         further_package_specification = _[1].find('Version')!=-1 or _[1].find('Compiler')!=-1 or _[1].find('Flags')!=-1       
         if _[0].isspace()==False:
             if further_package_specification and block:
@@ -1144,10 +1145,9 @@ def get_spec(cfg_list,bench):
                     spec = spec+' @'
                 elif _[1].find('Compiler')!=-1:
                     spec = spec+' %'
-                ###NEW###
+                ###NEW ADDITION for flag support###
                 elif _[1].find('Flags')!=-1:
                     spec = spec+' '
-                ###NEW###
                 else:
                     spec=spec+' ^'
             spec=spec+_[0]
@@ -1987,7 +1987,8 @@ def install_spec(expr):
         expr_+=e[0]+'\$'+e[1]+'#'
     
     #run install.py
-    cmd='source {}/share/spack/setup-env.sh ; python3 {}/install.py {} {}'.format(SPACK_XPTH[:-9], LOC,meta,expr_[:len(expr_)-1])
+    ###NEW ADDITION: added quation marks around the spec because the added spaces turn the string into multiple arguments###
+    cmd='source {}/share/spack/setup-env.sh ; python3 {}/install.py {} "{}"'.format(SPACK_XPTH[:-9], LOC,meta,expr_[:len(expr_)-1])
     #print(cmd)
     p=subprocess.run(str(cmd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
     
