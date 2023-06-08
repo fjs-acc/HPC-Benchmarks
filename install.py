@@ -68,7 +68,8 @@ def check_expr(expr,name):
                     """
                     _=_.split('@')                
                     if len(_) > 1:
-                        if not check_spec(_[0],_[1]):
+                        ###NEW ADDITION to fix the "package doesn't exist" problem caused by the flags
+                        if not check_spec(_[0],_[1].split(" ")[0]):
                             #Version existiert nicht
                             menutxt+='\n'+FCOL[6]+'<warning> '+FEND+'profile: '+FCOL[6]+name+FEND+' was deselected!\n          reason: {} doesn\'t exist!\n'.format(_[0]+'@'+_[1])+expr+FCOL[8]+'\n'+'^'.rjust(expr.find(_[0]+'@'+_[1])+1)+FEND+'\n'
                             error_log('can\'t install {}: package {} doesn\'t not exist!\n'.format(name,_[0]+'@'+_[1])+expr+'\n'+'^'.rjust(expr.find(_[0]+'@'+_[1])+1)+'\n')                        
