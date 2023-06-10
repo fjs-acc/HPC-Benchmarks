@@ -14,6 +14,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import json
+
 import os
 import os.path
 import subprocess
@@ -183,9 +185,13 @@ def cl_arg():
     '  '+FCOL[7]+'all:'+FEND+' cleans projects folder, install scripts and log.txt,'+FCOL[13]+' not mem.txt!\n'+FEND+     
     '     '+FCOL[2]+'e.g.: -c projects\n'+
     '           -c all\n'+FEND+
-    FCOL[15]+'<info>    '+FEND+'please consider saving relevant project results beforehand\n')
-
-    
+    FCOL[15]+'<info>    '+FEND+'please consider saving relevant project results beforehand\n'+FEND)
+    ###NEW ADDITION###
+    parser.add_argument('-o','--optimize',nargs='*',type=str,help=''+
+    FCOL[15]+'Optimize a softwarestack\n'+FEND)
+    parser.add_argument('-e','--evaluate',nargs='*',type=str,help=''+
+    FCOL[15]+'evaluating runs\n'+FEND)
+    ###/NEW ADDITION###
     
     args= parser.parse_args()
     
@@ -299,18 +305,37 @@ def cl_arg():
         print(show_highlights(func,res_id,bench_tag,count,search_mode,settings)+'\n')
         if menutxt!='':
             print(menutxt)
-    
+    ###NEW###
+    if args.optimize:
+        print("You have chosen the optimize flag")
+        subprocess.run("python3 sb.py -i hpl all", shell=True)
+
+
+    if args.evaluate:
+        print("evaluating...")
+    ###/NEW###
+
     #Start via Menu   
-    if not args.install and not args.test and not args.load and not args.profiles and not args.write and not args.run and not args.clean and not args.show:
+    if not args.install and not args.test and not args.load and not args.profiles and not args.write and not args.run and not args.clean and not args.show and not args.optimize and not args.evaluate:
         menu_ctrl=True
         clear()
         for id in BENCH_ID_LIST:
             if id==MISC_ID:
                 continue
             get_cfg(tag_id_switcher(id))
+        ###NEW###
+        with open('stack.json', 'r') as json_file:
+            cfg_profiles[0].append(json.load(json_file))     
+        subprocess.run("",capture_output=True,text=True,shell=True)   
+        ###/NEW###
+
         menu()
     
-    
+###NEW FUNCTIONS###
+def generate_configs():
+    return 0
+
+###/NEW FUNCTIONS###
 
 
 """

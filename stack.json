@@ -1,0 +1,31 @@
+{
+    "current_packages":{
+        "compiler":null,
+        "mpi":null,
+        "mpi_compiler":null,
+        "blas":null,
+        "blas_compiler":null,
+        "lapack":null,
+        "lapack_compiler":null,
+        "fftw":null,
+        "fftw-compiler":null
+    },
+    "compiler":[
+        "gcc@12.1.0",
+        "aocc@3.1.0"
+    ],
+    "mpi":[
+        "openmpi",
+        "mpich"
+    ],
+    "blas":[
+        "openblas"
+    ],
+    "lapack":[
+        ""
+    ],
+    "fftw":[
+        
+    ]
+
+  }
