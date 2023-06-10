@@ -324,9 +324,9 @@ def cl_arg():
                 continue
             get_cfg(tag_id_switcher(id))
         ###NEW###
-        with open('stack.json', 'r') as json_file:
-            cfg_profiles[0].append(json.load(json_file))     
-        subprocess.run("",capture_output=True,text=True,shell=True)   
+        #with open('stack.json', 'r') as json_file:
+        #    cfg_profiles[0].append(json.load(json_file))     
+        #subprocess.run("",capture_output=True,text=True,shell=True)   
         ###/NEW###
 
         menu()
@@ -1759,8 +1759,18 @@ def build_batch(selected_profiles, bench_id, extra_args = ''):
         
         #different profiles might use the same package during the same run, so we have to update the benchmark-parameters
         for params in TRANSFER_PARAMS:
-            if tag_id_switcher(bench_id) == params[0]:                
-                _='python3 '+CONFIG_TO_DAT_XPTH+' '+profile[0][1]+' '+profile[0][2]+'/'+params[3]+' '+str(params[1])+' '+str(params[2])+'\n'              
+            if tag_id_switcher(bench_id) == params[0]:
+
+                ####NEW ADDITION TO FIX THE FAULTY CFG_TO_DAT CONVERSION###
+                sline=0
+                with open(profile[0][1],"r") as cfg:
+                    for line in cfg:
+                        if re.search("benchmark parameters",line):
+                            break
+                        sline+=1
+
+                _='python3 '+CONFIG_TO_DAT_XPTH+' '+profile[0][1]+' '+profile[0][2]+'/'+params[3]+' '+str(sline)+' '+str(params[2])+'\n'
+                #_='python3 '+CONFIG_TO_DAT_XPTH+' '+profile[0][1]+' '+profile[0][2]+'/'+params[3]+' '+str(params[1])+' '+str(params[2])+'\n'              
                 
                 if first_job:
                     first_job=False
