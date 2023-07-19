@@ -307,8 +307,11 @@ def cl_arg():
             print(menutxt)
     ###NEW###
     if args.optimize:
-        print("You have chosen the optimize flag")
-        subprocess.run("python3 sb.py -i hpl all", shell=True)
+        '''
+        -o stack
+        sbatch script.sh
+        
+        '''
 
 
     if args.evaluate:
@@ -1762,7 +1765,7 @@ def build_batch(selected_profiles, bench_id, extra_args = ''):
             if tag_id_switcher(bench_id) == params[0]:
 
                 ####NEW ADDITION TO FIX THE FAULTY CFG_TO_DAT CONVERSION###
-                sline=0
+                sline=1
                 with open(profile[0][1],"r") as cfg:
                     for line in cfg:
                         if re.search("benchmark parameters",line):
