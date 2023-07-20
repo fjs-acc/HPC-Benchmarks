@@ -1,0 +1,2254 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3004-->***shell***#1412-->error_log@11-06-2023---09:27:42 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3004-->***shell***#1412-->error_log@11-06-2023---09:27:43 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3025-->cl_arg#3021-->get_cfg#218-->get_target_path#684-->***shell***#1249-->error_log@11-06-2023---09:27:44 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3025-->cl_arg#3021-->get_cfg#218-->***get_target_path***#684-->error_log@11-06-2023---09:27:44 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->_find_and_load#22-->_find_and_load_unlocked#991-->_load_unlocked#975-->exec_module#671-->_call_with_frames_removed#848-->***<module>***#219-->error_log@11-06-2023---09:27:45 [***problem occurance***] 
+further information:
+failed to determine the terminal width
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "/home/fjs/ba/thesis/HPC-Benchmarks/sb.py", line 2974, in <module>
+    calc_terminal_size()
+  File "/home/fjs/ba/thesis/HPC-Benchmarks/sb.py", line 1451, in calc_terminal_size
+    size=str(os.get_terminal_size())
+OSError: [Errno 25] Inappropriate ioctl for device
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->_find_and_load#22-->_find_and_load_unlocked#991-->_load_unlocked#975-->exec_module#671-->_call_with_frames_removed#848--><module>#219-->clean_dummy_projects#3004-->***shell***#1412-->error_log@11-06-2023---09:27:45 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->main#135-->install_spec#123-->check_expr#106-->check_spec#72-->***shell***#40-->error_log@11-06-2023---09:27:45 [***problem occurance***] 
+further information:
+subshell: non zero termination for »spack info hpl «
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->main#135-->install_spec#123-->***check_expr***#106-->error_log@11-06-2023---09:27:45 [***problem occurance***] 
+further information:
+can't install hpl_cfg_1.txt: package hpl @2.3  doesn't not exist!
+hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+^
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->main#135-->***install_spec***#123-->error_log@11-06-2023---09:27:45 [***problem occurance***] 
+further information:
+there is nothing to install
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3004-->***shell***#1412-->error_log@11-06-2023---09:28:01 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3004-->***shell***#1412-->error_log@11-06-2023---09:28:16 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3004-->***shell***#1412-->error_log@11-06-2023---09:28:17 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3007-->***shell***#1415-->error_log@19-07-2023---16:45:03 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->get_cfg#328-->get_target_path#687-->***shell***#1252-->error_log@19-07-2023---16:45:04 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->get_cfg#328-->***get_target_path***#687-->error_log@19-07-2023---16:45:04 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->get_cfg#328-->get_target_path#687-->***shell***#1252-->error_log@19-07-2023---16:45:05 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->get_cfg#328-->***get_target_path***#687-->error_log@19-07-2023---16:45:05 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->get_cfg#328-->get_target_path#687-->***shell***#1252-->error_log@19-07-2023---16:45:05 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->get_cfg#328-->***get_target_path***#687-->error_log@19-07-2023---16:45:05 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->menu#335-->hpl_menu#2348-->avail_pkg#2662-->***shell***#1539-->error_log@19-07-2023---16:45:15 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->menu#335-->print_menu#2336-->avail_pkg#2266-->***shell***#1539-->error_log@19-07-2023---16:45:22 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->menu#335-->print_menu#2336-->avail_pkg#2266-->***shell***#1539-->error_log@19-07-2023---16:45:23 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3028-->cl_arg#3024-->menu#335-->print_menu#2336-->avail_pkg#2266-->***shell***#1539-->error_log@19-07-2023---16:45:23 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:06:27 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3028, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:06:27 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:06:30 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:06:30 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:06:30 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:06:30 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:06:31 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:06:31 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@19-07-2023---17:06:42 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@19-07-2023---17:07:03 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:07:57 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3028, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:07:57 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:08:14 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3028, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:08:14 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:08:14 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:08:14 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:08:15 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:08:15 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:08:15 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:08:15 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2812-->***shell***#1544-->error_log@19-07-2023---17:08:28 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@19-07-2023---17:11:53 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:14:23 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3028, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:14:23 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:14:24 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:14:24 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:14:24 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:14:24 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:14:25 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:14:25 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:15:22 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3028, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:15:22 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:15:22 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:15:23 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:15:23 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:15:23 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:15:24 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:15:24 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:22:16 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3032, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:22:16 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:22:17 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:22:17 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:22:17 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:22:17 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:22:18 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:22:18 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:24:15 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3034, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3102-->***shell***#1426-->error_log@19-07-2023---17:24:15 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->get_target_path#696-->***shell***#1263-->error_log@19-07-2023---17:24:15 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->***get_target_path***#696-->error_log@19-07-2023---17:24:15 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->get_target_path#696-->***shell***#1263-->error_log@19-07-2023---17:24:16 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->***get_target_path***#696-->error_log@19-07-2023---17:24:16 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->get_target_path#696-->***shell***#1263-->error_log@19-07-2023---17:24:16 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->***get_target_path***#696-->error_log@19-07-2023---17:24:16 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:33:41 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3034, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3102-->***shell***#1426-->error_log@19-07-2023---17:33:41 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->get_target_path#696-->***shell***#1263-->error_log@19-07-2023---17:33:43 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->***get_target_path***#696-->error_log@19-07-2023---17:33:43 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->get_target_path#696-->***shell***#1263-->error_log@19-07-2023---17:33:44 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->***get_target_path***#696-->error_log@19-07-2023---17:33:44 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->get_target_path#696-->***shell***#1263-->error_log@19-07-2023---17:33:44 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3123-->cl_arg#3119-->get_cfg#331-->***get_target_path***#696-->error_log@19-07-2023---17:33:44 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:34:34 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3032, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:34:34 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:34:35 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:34:35 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:34:35 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:34:35 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:34:36 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:34:36 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:35:53 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3032, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:35:53 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:35:54 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:35:54 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:35:54 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:35:54 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:35:55 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:35:55 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:37:50 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3032, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:37:50 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:37:50 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:37:50 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:37:51 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:37:51 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:37:51 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:37:51 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+sb.py: ***<module>***-->error_log@19-07-2023---17:38:27 [***problem occurance***] 
+further information:
+failed to calculate basic paths
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "sb.py", line 3032, in <module>
+    prepare_array()
+  File "sb.py", line 566, in prepare_array
+    cfg_profiles[id].append([[]])
+IndexError: list index out of range
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:38:27 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->comline_run_helper#249-->get_cfg#762-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:38:28 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->comline_run_helper#249-->get_cfg#762-->***get_target_path***#694-->error_log@19-07-2023---17:38:28 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->comline_run_helper#249-->bench_run#763-->***shell***#1658-->error_log@19-07-2023---17:38:28 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->comline_run_helper#249-->***bench_run***#763-->error_log@19-07-2023---17:38:28 [***problem occurance***] 
+further information:
+profile: hpl_cfg_1.txt was deselected! (no path known)
+==> No package matches the query: hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] bench_id	<==>	1
+[2.] farg	<==>	1
+[3.] extra_args	<==>	
+[4.] tag	<==>	hpl
+[5.] pth	<==>	/home/fjs/ba/thesis/HPC-Benchmarks/configs/hpl/
+[6.] selected_profiles<==>	***var-value left out, too long: 520 characters***
+[7.] avail_names<==>	['hpl_cfg_1.txt']
+[8.] unavail_names<==>	[]
+[9.] dlist	<==>	[]
+[10.] i		<==>	0
+[11.] res	<==>	***var-value left out, too long: 116 characters***
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:45:44 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:45:44 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:45:45 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:45:45 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:45:45 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:45:46 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:45:46 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:48:23 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:48:24 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:48:24 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:48:24 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:48:24 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:48:25 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:48:25 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:49:01 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:01 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:01 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:02 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:02 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:02 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:02 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:03 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:03 [***problem occurance***] 
+further information:
+a path for »hpcc @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 117 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3100-->***shell***#1424-->error_log@19-07-2023---17:49:20 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:21 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:21 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:21 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:21 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:22 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:22 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->get_target_path#694-->***shell***#1261-->error_log@19-07-2023---17:49:22 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3121-->cl_arg#3117-->get_cfg#331-->***get_target_path***#694-->error_log@19-07-2023---17:49:22 [***problem occurance***] 
+further information:
+a path for »hpcc @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 117 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:49:51 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:49:52 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:49:52 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:49:52 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:49:52 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:49:53 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:49:53 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@19-07-2023---17:49:53 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@19-07-2023---17:49:53 [***problem occurance***] 
+further information:
+a path for »hpcc @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 117 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@19-07-2023---17:49:58 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                   - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->_find_and_load#22-->_find_and_load_unlocked#991-->_load_unlocked#975-->exec_module#671-->_call_with_frames_removed#848-->***<module>***#219-->error_log@19-07-2023---17:50:02 [***problem occurance***] 
+further information:
+failed to determine the terminal width
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                      - exception -   
+Traceback (most recent call last):
+  File "/home/fjs/ba/thesis/HPC-Benchmarks/sb.py", line 3066, in <module>
+    calc_terminal_size()
+  File "/home/fjs/ba/thesis/HPC-Benchmarks/sb.py", line 1459, in calc_terminal_size
+    size=str(os.get_terminal_size())
+OSError: [Errno 25] Inappropriate ioctl for device
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->_find_and_load#22-->_find_and_load_unlocked#991-->_load_unlocked#975-->exec_module#671-->_call_with_frames_removed#848--><module>#219-->clean_dummy_projects#3096-->***shell***#1420-->error_log@19-07-2023---17:50:02 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+/home/fjs/ba/thesis/HPC-Benchmarks/install.py: <module>-->main#147-->***install_spec***#135-->error_log@19-07-2023---17:50:02 [***problem occurance***] 
+further information:
+there is nothing to install
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@20-07-2023---09:13:52 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:13:53 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:13:53 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:13:53 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:13:53 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:13:54 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:13:54 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:13:54 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:13:54 [***problem occurance***] 
+further information:
+a path for »hpcc @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 117 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:14:12 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:14:12 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:14:13 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcg @3.1 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:14:13 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@20-07-2023---09:14:27 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@20-07-2023---09:15:06 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:15:06 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:15:06 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:15:07 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:15:07 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:15:07 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:15:07 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @9.4.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:15:08 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:15:08 [***problem occurance***] 
+further information:
+a path for »hpcc @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 117 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:15:11 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:15:12 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:15:12 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:15:13 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@20-07-2023---09:15:26 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@20-07-2023---09:16:06 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:16:07 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:16:07 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:16:07 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:16:07 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:16:08 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:16:08 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @9.4.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:16:08 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcc @2.3 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0 ^openblas @0.3.20 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:16:08 [***problem occurance***] 
+further information:
+a path for »hpcc @2.3 %gcc @9.4.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcc @2.3 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0 ^openblas @0.3.20 %gcc @9.4.0
+[2.] pth<==>	***var-value left out, too long: 114 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:16:11 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:16:12 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:16:12 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:16:13 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0 ^openblas @0.3.20 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->hpcc_menu#2353-->avail_pkg#2836-->***shell***#1544-->error_log@20-07-2023---09:16:17 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcc @2.3 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0 ^openblas @0.3.20 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->clean_dummy_projects#3096-->***shell***#1420-->error_log@20-07-2023---09:18:26 [***problem occurance***] 
+further information:
+subshell: non zero termination for »find /home/fjs/ba/thesis/HPC-Benchmarks/projects -name '*@*[dummy]*' -path '/home/fjs/ba/thesis/HPC-Benchmarks/projects*'«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:18:27 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:18:27 [***problem occurance***] 
+further information:
+a path for »hpl @2.3 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 116 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:18:27 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:18:27 [***problem occurance***] 
+further information:
+a path for »osu-micro-benchmarks @5.9 %gcc @12.1.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0
+[2.] pth<==>	***var-value left out, too long: 102 characters***
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->get_target_path#690-->***shell***#1257-->error_log@20-07-2023---09:18:28 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find --paths hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->get_cfg#331-->***get_target_path***#690-->error_log@20-07-2023---09:18:28 [***problem occurance***] 
+further information:
+a path for »hpcg @3.1 %gcc @9.4.0 « couldn't be found!
+ -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  - 
+                                                                          - locals -     
+[1.] spec<==>	hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0
+[2.] pth<==>	==> No package matches the query: hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0
+
+[3.] _	<==>	-1
+[4.] r	<==>	
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:18:31 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpl @2.3 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0 ^openblas @0.3.20 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:18:31 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find osu-micro-benchmarks @5.9 %gcc @12.1.0 ^openmpi @4.1.3 %gcc @12.1.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      - call hierarchy - 
+sb.py: <module>-->main#3117-->cl_arg#3113-->menu#338-->print_menu#2341-->avail_pkg#2271-->***shell***#1544-->error_log@20-07-2023---09:18:32 [***problem occurance***] 
+further information:
+subshell: non zero termination for »/home/fjs/spack/bin/spack find hpcg @3.1 %gcc @9.4.0 ^openmpi @4.1.3 %gcc @9.4.0«
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

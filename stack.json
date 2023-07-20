@@ -1,6 +1,9 @@
 {
     "current_packages":{
-        "compiler":null,
+        "compiler":{
+            "package":"",
+            "version":""
+        },
         "mpi":null,
         "mpi_compiler":null,
         "blas":null,

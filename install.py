@@ -38,6 +38,18 @@ def give_hint():
 #Überprüft ob ein einzelner spec (Name + Version) existiert
 def check_spec(name,version=-1):       
     out = shell('spack info '+str(name))
+###NEW ADDITION###
+    ###Some software is bundled together in a package of a different name
+    ###like in the case of the intel compilers, and thus can not be found
+    ###via spack find
+    exceptions=["intel","oneapi"]
+    if name.replace(" ","") in exceptions:
+        return True
+###/NEW ADDITION###
+
+
+
+
     #Falls keine Version vorhanden
     if version == -1:
         if out.find('Error')== -1:

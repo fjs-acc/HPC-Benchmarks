@@ -139,7 +139,10 @@ def cl_arg():
     '           -r osu_latency all <=> -r osu_latency\n\n'+
     FCOL[15]+'hpcg <cfg>,<cfg>,...,<cfg>\n'+FEND+
     FCOL[2]+'     e.g.: -r hpcg 1,3-4,Test1\n'+
-    '           -r hpcg all <=> -r hpcg\n\n'+FEND)
+    '           -r hpcg all <=> -r hpcg\n\n'+FEND+
+    FCOL[15]+'hpcc <cfg>,<cfg>,...,<cfg>\n'+FEND+
+    FCOL[2]+'     e.g.: -r hpcc 1,3-4,Test1\n'+
+    '           -r hpcc all <=> -r hpcc\n\n'+FEND)
     
     parser.add_argument('-w','--write',nargs='+',type=str,help=''+
     FCOL[15]+'works very similar to -r/--run\n'+FEND+
@@ -670,7 +673,7 @@ def get_cfg(bench,farg='all'):
                 if block==2:
                     spec_.append(ln)
             #a parting line implies that we're ready to append the finished block
-            elif (len(sublist)>0) and (ln.find('---')>-1):                
+            elif (len(sublist)>0) and (ln.find('---')>-1):            
                 cfg_profiles[id][names.index(p)].append(sublist)                
                 block+=1
                 sublist=[]
@@ -1222,11 +1225,13 @@ def tag_id_switcher(bench):
         HPL_ID: 'hpl',
         OSU_ID: 'osu',
         HPCG_ID: 'hpcg',
+        HPCC_ID: 'hpcc',
       
         'misc': MISC_ID,
         'hpl': HPL_ID,
         'osu': OSU_ID,
         'hpcg': HPCG_ID,
+        'hpcc': HPCC_ID,
         }
         return switcher.get(bench) 
     
@@ -1924,7 +1929,7 @@ def execute_line(bench_id, bin_path, node_count, proc_count, extra_args, output,
         txt+='cd {}'.format(res_dir[:res_dir.rfind('/')+1]+res_dir[res_dir.rfind('#')+1:])+'\n'
         txt+='mpirun -np {pcount} {bpath}xhpcg; '.format(pcount = proc_count, bpath = bin_reference)
         txt+='mv HPCG*.txt {}.out; mv hpcg*T*.txt hpcg_meta@{}.txt'.format(output[output.rfind('/')+1:-4],output[output.rfind('/')+1:-4])
-    
+    ###TODO HPCC und OPENMPI FIX###
     return txt
 
 def build_plot(t_id, bench,run_dir):
@@ -2768,6 +2773,89 @@ def hpcg_menu():
         else:
             print_hpcg_menu(FORM[1]+FCOL[9]+'invalid input'+FEND+': to select option »(n) ...« use the corresponding integer »input:n«')
 
+#############################
+####    functions for    ####
+####       - HPCC -       ####
+#### regulation via menu ####
+#############################
+
+def print_hpcc_menu(txt = ''):
+    global menutxt
+    calc_terminal_size()
+    refresh_format_params()
+    clear()
+    print(FBGR[11]+FORM[0]+'{:^{pos}}'.format('HPCC', pos=t_width))
+    print(FEND+ml+'(0)'+mr+' return to main menu')
+    print(ml+'(1)'+mr+' run')
+    print(ml+'(2)'+mr+' view installed packages')
+    print(ml+'(3)'+mr+' install packages')
+    print(' ')
+    #that's the part where we get feedback via menutxt
+    print(menutxt.replace('\n','\n'+ml)+str(txt))
+    menutxt='\n'
+
+def hpcc_menu():
+    global menutxt
+    print_hpcc_menu()
+        
+    while True:
+        opt = input_format()
+        if opt == '0' or opt == 'q':
+            clear()
+            return 0
+        elif opt == '1' or opt == 'run':
+            txt='\n'+ml+FCOL[13]+FORM[0]+'which profiles do you wish to run?\n\n'+FEND
+            txt+=ml+FCOL[0]+FORM[0]+'how to reference profiles: \n'+FEND+FCOL[0]+ml+'hpcc_cfg_test.txt \t\t\t<=> \ttest \n'+ml+'hpcc_cfg_1.txt,...,hpcc_cfg_5.txt \t<=> \t1-5 \n\n'+ml+'e.g. valid input: »1-3,test,9«\n'+ml+'     abort: »cancel«\n\n'+FEND
+            txt+=ml+FCOL[0]+FORM[0]+'color-coding: \n'+FEND+FCOL[0]+ml+'green \t\t\t\t<=> \tinstalled \n'+ml+'yellow \t\t\t\t<=> \tmissing \n'+ml+'red \t\t\t\t\t<=> \terror '+FORM[1]+'(e.g. syntax errors etc.) '+FEND
+            txt+='\n\n'+ml+FCOL[15]+'--- found {} profiles ---'.format(tag_id_switcher(HPCC_ID))+FEND+'\n'+ml
+            left_size=t_width-len(ml)
+            for name in avail_pkg(HPCC_ID):
+                if left_size<len(name+mr):
+                    txt+='\n'+ml
+                    left_size=t_width-len(ml)
+                txt+=FORM[0]+name+FEND+mr
+                left_size-=len(name+mr)
+            if spack_problem!='':
+                txt+='\n\n'+ml+FCOL[6]+'<warning> '+FEND+'no availability information!\n'+ml+'          reason: {}\n'.format(spack_problem)+'          '+ml+FCOL[6]+SPACK_XPTH+FEND
+            print_hpcc_menu(txt)
+            expr=input_format()
+            if expr=='cancel':
+                clear()
+                return 0
+            scr_pth = bench_run(HPCC_ID, expr.replace(' ',''))
+            menutxt+='\n'+FCOL[4]+shell('sbatch {}'.format(scr_pth))+FEND
+            print_hpcc_menu('')
+        elif opt == '2' or opt == 'view':
+            print_hpcc_menu(view_installed_specs(tag_id_switcher(HPCC_ID)))
+        elif opt == '3'or opt == 'install':           
+            txt='\n'+ml+FCOL[13]+FORM[0]+'which profiles do you wish to install?\n\n'+FEND
+            txt+=ml+FCOL[0]+FORM[0]+'how to reference profiles: \n'+FEND+FCOL[0]+ml+'hpcc_cfg_test.txt \t\t\t<=> \ttest \n'+ml+'hpcc_cfg_1.txt,...,hpcc_cfg_5.txt \t<=> \t1-5 \n\n'+ml+'e.g. valid input: »1-3,test,9«\n'+ml+'     abort: »cancel«\n\n'+FEND
+            txt+=ml+FCOL[0]+FORM[0]+'color-coding: \n'+FEND+FCOL[0]+ml+'teal/beige \t\t\t\t<=> \tpot. installable \n'+ml+'grey \t\t\t\t<=> \tinstalled \n'+ml+'red \t\t\t\t\t<=> \terror '+FORM[1]+'(e.g. syntax errors etc.) '+FEND
+            txt+='\n\n'+ml+FCOL[15]+'--- found {} profiles ---'.format(tag_id_switcher(HPCC_ID))+FEND+'\n'+ml
+            left_size=t_width-len(ml)
+            for name in avail_pkg(HPCC_ID):
+                if left_size<len(name+mr):
+                    txt+='\n'+ml
+                    left_size=t_width-len(ml)
+                #replace() enables a different color coding than for run    
+                txt+=name.replace(FCOL[7],FCOL[15]).replace(FCOL[4],FCOL[0])+FEND+mr
+                left_size-=len(name+mr)
+            print_hpcc_menu(txt)
+            
+            #preparation for install_spec
+            expr=input_format()
+            if expr=='cancel':
+                clear()
+                return 0
+            elif expr=='' or expr =='all':
+                expr=get_all_specs('hpcc')
+            else:
+                names=farg_to_list(expr,'hpcc')
+                expr=get_all_specs('hpcc',names)   
+            print_hpcc_menu(install_spec(expr))
+            
+        else:
+            print_hpcc_menu(FORM[1]+FCOL[9]+'invalid input'+FEND+': to select option »(n) ...« use the corresponding integer »input:n«')
 
     
 """
@@ -2873,10 +2961,11 @@ MISC_ID = 0
 HPL_ID = 1
 OSU_ID = 2
 HPCG_ID = 3
+HPCC_ID = 4
 
 #we also want to have something iterable corresponding to our supported benchmarks
-BENCH_ID_LIST = [MISC_ID, HPL_ID, OSU_ID, HPCG_ID]
-BENCHS_WITHOUT_EXTRA_ARGS =[HPL_ID,HPCG_ID]
+BENCH_ID_LIST = [MISC_ID, HPL_ID, OSU_ID, HPCG_ID, HPCC_ID]
+BENCHS_WITHOUT_EXTRA_ARGS =[HPL_ID,HPCG_ID, HPCC_ID]
 
 #format: tag, offset in local config files, offset in package config files (like HPL.dat)  
 TRANSFER_PARAMS = [['hpl', 16, 2, 'HPL.dat'], ['hpcg', 12, 2, 'hpcg.dat']]
@@ -2906,7 +2995,7 @@ pkg_info = []
 
 #Trägt Informationen des Config-Ordners; Ersteintrag für Metadaten
 #Index: [Benchmark-id][Profil-Nr.][Abschnitt][Zeile im Abschnitt]
-cfg_profiles = [[],[],[],[]]
+cfg_profiles = [[],[],[],[],[]]
 
 #Pfade zu den Benchmarks (Index <=> Benchmark-ID; Ersteintrag führt zur allg. config!)
 BENCH_PTHS = []
