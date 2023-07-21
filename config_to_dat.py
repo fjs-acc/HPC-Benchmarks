@@ -38,6 +38,12 @@ offset = int(sys.argv[4])
 #Funktion schreibt HPL-Abschnitt aus dem Config-Profil in eine HPL.dat (beide Pfade notwendig)
 def dat_transfer():
     try:
+        ###Test if the target exists. If it doesn't,create one####
+        if not os.path.exists(target):
+            with open(target,"w") as t:
+                t.write("HPLinpack benchmark input file"+"\n")
+                t.write("Innovative Computing Laboratory, University of Tennessee"+"\n")
+        ###########################################################
         stringlist = []
         e = sline
         while True:
