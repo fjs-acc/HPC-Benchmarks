@@ -363,7 +363,8 @@ def plot_list():
 def main():   
     TIMESTEMP=str(sys.argv[1])
     BENCH=str(sys.argv[2])
-    run_plot(TIMESTEMP,BENCH)
+    if BENCH!="hpcc":
+        run_plot(TIMESTEMP,BENCH)
     time=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     file_w('{}/projects/{}_res@{}/plot.out'.format(LOC,BENCH,TIMESTEMP),'{} finished'.format(time),0)
     

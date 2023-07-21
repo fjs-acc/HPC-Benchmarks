@@ -1888,7 +1888,7 @@ def build_job(profile, bench_id, run_dir, res_dir, num=0, extra_args = ''):
         #Sourcen von spack   
         jobtxt+='source {}/share/spack/setup-env.sh\n'.format(SPACK_XPTH[:-9])
         #Laden der passenden Umgebung
-        jobtxt+= 'spack load {}\n'.format(profile[0][3])   
+        jobtxt+= 'spack load --first {}\n'.format(profile[0][3])   
         jobtxt+='\n'
         #Skriptzeile in der eine Binary ausgeführt wird
         jobtxt+=execute_line(bench_id, bin_path, profile[len(profile)-2][1], profile[len(profile)-2][2], extra_args, res_dir+num_workaround+shortened_name+'/'+num_workaround+shortened_name+'.out', res_dir+num_workaround+shortened_name)
@@ -1930,6 +1930,10 @@ def execute_line(bench_id, bin_path, node_count, proc_count, extra_args, output,
         txt+='mpirun -np {pcount} {bpath}xhpcg; '.format(pcount = proc_count, bpath = bin_reference)
         txt+='mv HPCG*.txt {}.out; mv hpcg*T*.txt hpcg_meta@{}.txt'.format(output[output.rfind('/')+1:-4],output[output.rfind('/')+1:-4])
     ###TODO HPCC und OPENMPI FIX###
+    elif bench_id==HPCC_ID:
+        txt+='cd {}'.format(res_dir[:res_dir.rfind('/')+1]+res_dir[res_dir.rfind('#')+1:])+'\n'
+        txt+='mpirun -np {pcount} {bpath}hpcc; '.format(pcount = proc_count, bpath = bin_reference)
+        txt+='mv hpccoutf.txt {}.out'.format(output[output.rfind('/')+1:-4])
     return txt
 
 def build_plot(t_id, bench,run_dir):
@@ -2968,7 +2972,7 @@ BENCH_ID_LIST = [MISC_ID, HPL_ID, OSU_ID, HPCG_ID, HPCC_ID]
 BENCHS_WITHOUT_EXTRA_ARGS =[HPL_ID,HPCG_ID, HPCC_ID]
 
 #format: tag, offset in local config files, offset in package config files (like HPL.dat)  
-TRANSFER_PARAMS = [['hpl', 16, 2, 'HPL.dat'], ['hpcg', 12, 2, 'hpcg.dat']]
+TRANSFER_PARAMS = [['hpl', 16, 2, 'HPL.dat'], ['hpcg', 12, 2, 'hpcg.dat'],['hpcc',16,2,'hpccinf.txt']]
 
 
 #############################
