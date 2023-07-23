@@ -1,0 +1,149 @@
+{
+    "bms_for_package":{
+        "compiler":["hpcc","hpcg"],
+        "mpi":["osu_latency","osu_bandwidth","hpcg"],
+        "blas":["hpcc"]
+    },
+    "config":{
+        "meta settings":{
+            "[iterations]":0,
+            "[aggregation: e.g. avg, max]":0
+        },
+        "base dependencies":{
+            
+        },
+        "benchmark parameters":{
+            "hpl":{
+                "[0]":0,
+                "[1]":0,
+                "[#Matrizen]":0,
+                "[Matrixgröße(n)]":0,
+                "[#Blöcke]":0,
+                "[Blockgröße(n)]":0,
+                "[Mapping: 0=row;1=column]":0,
+                "[#Grids: PxQ]":0,
+                "[Ps]":0,
+                "[Qs]":0,
+                "[Genauigkeit: <0 <=> aus]":0,
+                "[2]":0,
+                "[3]":0,
+                "[4]":0,
+                "[5]":0,
+                "[6]":0,
+                "[7]":0,
+                "[8]":0,
+                "[9]":0,
+                "[10]":0,
+                "[11]":0,
+                "[12]":0,
+                "[13]":0,
+                "[14]":0,
+                "[15]":0,
+                "[16]":0,
+                "[17]":0,
+                "[18]":0,
+                "[19]":0
+            },
+            "hpcg":{
+                "[problem size]":0,
+                "[time target in s]":0
+            },
+            "hpcc":{
+                "[0]":0,
+                "[1]":0,
+                "[#Matrizen]":0,
+                "[Matrixgröße(n)]":0,
+                "[#Blöcke]":0,
+                "[Blockgröße(n)]":0,
+                "[Mapping: 0=row;1=column]":0,
+                "[#Grids: PxQ]":0,
+                "[Ps]":0,
+                "[Qs]":0,
+                "[Genauigkeit: <0 <=> aus]":0,
+                "[2]":0,
+                "[3]":0,
+                "[4]":0,
+                "[5]":0,
+                "[6]":0,
+                "[7]":0,
+                "[8]":0,
+                "[9]":0,
+                "[10]":0,
+                "[11]":0,
+                "[12]":0,
+                "[13]":0,
+                "[14]":0,
+                "[15]":0,
+                "[16]":0,
+                "[17]":0,
+                "[18]":0,
+                "[19]":0,
+                "[Seperator]":0,
+                "[Number of additional problem sizes for PTRANS]":0,
+                "[values of N]":"1200 10000 30000",
+                "[number of additional blocking sizes for PTRANS]":0,
+                "[values of NB]":"40 9 8 13 13 20 16 32 64"
+            }
+        },
+        "SLURM parameters":{
+            "[Partition]":0,
+            "[Nodes]":0,
+            "[Prozesse]":0,
+            "[Prozesse/Tasks per Node]":0,
+            "[CPUs pro Prozess/Task]":0,
+            "[RAM in MB/CPU]":0,
+            "[Startpunkt, YYYY-MM-DD HH:MM:SS]":0,
+            "[Zeitlimit, DD-HH:MM:SS]":0,
+            "[Email an User]":0,
+            "[Email-Trigger, z.B. END,FAIL,TIME_LIMIT_80]":0,
+            "[Ziel/File für Output]":0,
+            "[Ziel/File für Fehler]":0
+        }
+
+    },
+    "stack":{
+        "compiler":"",
+        "mpi":"",
+        "blas":""
+    },
+    "testing":{
+
+    },
+    "packages":{
+        "compiler":{
+            "cmp1":{
+                "Name":"gcc",
+                "Version":"12.1.0"
+            },
+            "cmp2":{
+                "Name":"aocc",
+                "Version":"12.1.0"
+            }
+        },
+        "mpi":{
+            "mpi1":{
+                "Name":"openMPI",
+                "Version":"4.20.1",
+                "Flags":"+bs"
+            },
+            "mpi2":{
+                "Name":"mpich",
+                "Version":"4.20.1",
+                "Flags":"+bs"
+            }
+        },
+        "blas":{
+            "blas1":{
+                "Name":"openblas",
+                "Version":"69",
+                "Flags":"-k"
+            },
+            "blas2":{
+                "Name":"atlas",
+                "Version":"69",
+                "Flags":"-k"
+            }
+        }
+
+    }
+}        
