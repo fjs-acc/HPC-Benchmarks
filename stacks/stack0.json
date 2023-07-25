@@ -1,8 +1,8 @@
 {
     "bms_for_package":{
-        "compiler":["hpcc","hpcg"],
-        "mpi":["osu_latency","osu_bandwidth","hpcg"],
-        "blas":["hpcc"]
+        "Compiler":["hpcc","hpcg"],
+        "MPI":["osu_latency","osu_bandwidth","hpcg"],
+        "BLAS":["hpcc"]
     },
     "config":{
         "meta settings":{
@@ -102,29 +102,29 @@
 
     },
     "stack":{
-        "compiler":"",
-        "mpi":"",
-        "blas":""
+        "Compiler":"",
+        "MPI":"",
+        "BLAS":""
     },
     "testing":{
 
     },
     "packages":{
-        "compiler":{
+        "Compiler":{
             "cmp1":{
                 "Name":"gcc",
-                "Version":"12.1.0"
+                "Version":"9.4.0"
             },
             "cmp2":{
                 "Name":"aocc",
                 "Version":"12.1.0"
             }
         },
-        "mpi":{
+        "MPI":{
             "mpi1":{
-                "Name":"openMPI",
-                "Version":"4.20.1",
-                "Flags":"+bs"
+                "Name":"openmpi",
+                "Version":"4.1.5",
+                "Flags":""
             },
             "mpi2":{
                 "Name":"mpich",
@@ -132,11 +132,11 @@
                 "Flags":"+bs"
             }
         },
-        "blas":{
+        "BLAS":{
             "blas1":{
                 "Name":"openblas",
-                "Version":"69",
-                "Flags":"-k"
+                "Version":"0.3.23",
+                "Flags":""
             },
             "blas2":{
                 "Name":"atlas",

@@ -340,53 +340,79 @@ def cl_arg():
 
         #TODO: swap for candidates
         for pkg_type in STACK["stack"]:
-            bms=set()
-            STACK["testting"]=copy.deepcopy(STACK[pkg_type])
-            for bm in STACK["bms_for_package"][pkg_type]:
+            install_bms=set()
+            STACK["testing"]=copy.deepcopy(STACK["packages"][pkg_type])
+            run_bms=set(STACK["bms_for_package"][pkg_type])
+            for bm in run_bms:
                 if bm.find("osu")>-1:
-                    bms.add("osu")
+                    install_bms.add("osu")
                 else:
-                    bms.add(bm)
-            for bm in bms:
+                    install_bms.add(bm)
+
+            print("bms to run:{}\nbms to install: {}".format(run_bms,install_bms))
+
+            #Installing the benchmarks
+            for bm in install_bms:
                 generate_configs(bm,pkg_type)
                 #loading the configs requires a reset
                 #TODO: Limit it to changed benchmark
-                for id in BENCH_ID_LIST:
-                    if id==MISC_ID:
-                        continue
-                    
-                    cfg_profiles[id]=[]
-                    for _ in range(len(get_names(BENCH_PTHS[id]))):       
-                        cfg_profiles[id].append([[]])
+
+                list_to_test=list(STACK["testing"].keys())
+
+                #Installing the generated benchmark
+                cmd="python3 {}/sb.py -i {} {}".format(LOC,bm,",".join(list_to_test))
+                #output=shell(cmd)
+                #jobid=t.split("Submitted batch job ")[1]
+                #wait_for_job(jobid)
+
+                #print("executing command {}".format(cmd))
+
+                cfg_profiles[tag_id_switcher(bm)]=[]
+                for _ in range(len(get_names(BENCH_PTHS[tag_id_switcher(bm)]))):       
+                    cfg_profiles[tag_id_switcher(bm)].append([[]])
                 
-                    get_cfg(tag_id_switcher(id))
+                get_cfg(bm)
 
+                #filter out the package where the benchmark installation failed
+                profiles=cfg_profiles[tag_id_switcher(bm)]
+                unavailable_configs=list(filter(lambda p: p[0][2]=="no path found!",profiles))
+                a=list(map(remove_uninstalled_spec,unavailable_configs))
+                #print("{} {} are available {}".format(bm,pkg_type,unavailable_configs))
+                #print("available specs: {}".format(list(STACK["testing"].keys())))
+                
+                #print(unavailable_configs)
+                #print(a)
 
-                #id= python3 sb.py -i bm candidates
-                #id=int(id.split("Submitted batch job ")[1])
-                #candidates rauswerfen, bei denen die Installation nicht funktioniert
-
-            #cmd="python3 sb.py -i osu 1,2"
-            #t=subprocess.run(str(cmd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout.decode()
-            #print(t)
-            #cmd="squeue -j {}".format(t.split("Submitted batch job ")[1])
-            #jobid=t.split("Submitted batch job ")[1]
-            #t=subprocess.run(str(cmd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout.decode()
-            #print(jobid)
-            #cmd="squeue -h"
-            #while subprocess.run(str(cmd), stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout.decode().find(str(int(jobid)))>-1:
-            #    print("still installing...")
-            #    time.sleep(5)
-            #print("install script finished")
-
-
-
-            #a=run benchmarks
-            #id=(a.split("script building completed:\n")[1].split("\n")[0])
+            res_dir="{}/stacks/{}".format(LOC,args.evaluate[0])
+            try:
+                os.mkdir("{}/{}".format(res_dir,pkg_type))
+            except:
+                print("dir already exists")
             
-            #analyze results
+            for bm in run_bms:
+                list_to_test=list(STACK["testing"].keys())
 
-            #update stack
+                #Installing the generated benchmark
+                cmd="python3 {}/sb.py -w {} {}".format(LOC,bm,",".join(list_to_test))
+                print(cmd+"\n\n")
+                output=shell(cmd)
+                #jobid=t.split("Submitted batch job ")[1]
+                #wait_for_job(jobid)
+                path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
+                print(path)
+                path="es@".join(path)
+                print(path)
+                path=LOC+path.split(LOC)[1]
+                
+                print(path)
+
+                cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
+                #shell(cmd)
+                shutil.move(path,"{}/stacks/{}/{}".format(LOC,args.evaluate[0],pkg_type))
+                print(cmd+"\n")
+                #wait_for_job(jobid)
+
+        #analyze benchmarks
         
             
 
@@ -409,6 +435,12 @@ def cl_arg():
         menu()
     
 ###NEW FUNCTIONS###
+def remove_uninstalled_spec(unavailable_config):
+    generated_configs=list(STACK["testing"].keys())
+    pkg=unavailable_config[0][0].split("_cfg_")[1].split(".txt")[0]
+    if pkg in generated_configs:
+        STACK["testing"].pop(pkg,None)
+
 def wait_for_job(JobID):
     while subprocess.run("squeue -h", stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout.decode().find(JobID)>-1:
         print("still installing...")
@@ -418,7 +450,7 @@ def wait_for_job(JobID):
 def generate_configs(bm,package_type):
     config_dir=LOC+"/configs/"+bm
     #print("{} for {}".format(package_type,bm))
-    for spec in STACK["packages"][package_type]:
+    for spec in STACK["testing"]:
         cfg=""
         cfg+="----------meta settings----------\n"
         for key in STACK["config"]["meta settings"]:
@@ -456,37 +488,37 @@ def generate_hpl_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
         compiler=""
-        if not STACK["stack"]["compiler"]=="":
-            if not STACK["stack"]["compiler"]["Name"]=="":
-                compiler+=generate_config_line("[Compiler]",STACK["stack"]["compiler"]["Name"])
-            if not STACK["stack"]["compiler"]["Version"]=="":
-                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["compiler"]["Version"])
+        if not STACK["stack"]["Compiler"]=="":
+            if not STACK["stack"]["Compiler"]["Name"]=="":
+                compiler+=generate_config_line("[Compiler]",STACK["stack"]["Compiler"]["Name"])
+            if not STACK["stack"]["Compiler"]["Version"]=="":
+                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["Compiler"]["Version"])
         cfg_part+=compiler
 
-        if not STACK["stack"]["mpi"]=="":
-            if not STACK["stack"]["mpi"]["Name"]=="":
-                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["mpi"]["Name"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["mpi"]["Version"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["mpi"]["Flags"])
+        if not STACK["stack"]["MPI"]=="":
+            if not STACK["stack"]["MPI"]["Name"]=="":
+                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["MPI"]["Name"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["MPI"]["Version"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["MPI"]["Flags"])
             cfg_part+=compiler
 
-        if not STACK["stack"]["blas"]=="":
-            if not STACK["stack"]["blas"]["Name"]=="":
-                cfg_part+=generate_config_line("[blas]",STACK["stack"]["blas"]["Name"])
-            if not STACK["stack"]["blas"]["Version"]=="":
-                cfg_part+=generate_config_line("[blas Version]",STACK["stack"]["blas"]["Version"])
-            if not STACK["stack"]["blas"]["Version"]=="":
-                cfg_part+=generate_config_line("[blas Flags]",STACK["stack"]["blas"]["Flags"])
+        if not STACK["stack"]["BLAS"]=="":
+            if not STACK["stack"]["BLAS"]["Name"]=="":
+                cfg_part+=generate_config_line("[blas]",STACK["stack"]["BLAS"]["Name"])
+            if not STACK["stack"]["BLAS"]["Version"]=="":
+                cfg_part+=generate_config_line("[blas Version]",STACK["stack"]["BLAS"]["Version"])
+            if not STACK["stack"]["BLAS"]["Version"]=="":
+                cfg_part+=generate_config_line("[blas Flags]",STACK["stack"]["BLAS"]["Flags"])
             cfg_part+=compiler
         
-        if not STACK["packages"][package_type][spec]["Name"]=="":
-            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["packages"][package_type][spec]["Name"])
-        if not STACK["packages"][package_type][spec]["Version"]=="":
-            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["packages"][package_type][spec]["Version"])
-        if not package_type=="compiler" and not STACK["packages"][package_type][spec]["Flags"]=="":
-                cfg_part+=generate_config_line("[{} Flags].format(package_type)",STACK["packages"][package_type][spec]["Flags"])
+        if not STACK["testing"][spec]["Name"]=="":
+            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["testing"][spec]["Name"])
+        if not STACK["testing"][spec]["Version"]=="":
+            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["testing"][spec]["Version"])
+        if not package_type=="Compiler" and not STACK["testing"][spec]["Flags"]=="":
+                cfg_part+=generate_config_line("[{} Flags]".format(package_type),STACK["testing"][spec]["Flags"])
         cfg_part+=compiler
     elif part=="parameters":
         for line in STACK["config"]["benchmark parameters"]["hpl"]:
@@ -498,28 +530,28 @@ def generate_osu_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
         compiler=""
-        if not STACK["stack"]["compiler"]=="":
-            if not STACK["stack"]["compiler"]["Name"]=="":
-                compiler+=generate_config_line("[Compiler]",STACK["stack"]["compiler"]["Name"])
-            if not STACK["stack"]["compiler"]["Version"]=="":
-                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["compiler"]["Version"])
+        if not STACK["stack"]["Compiler"]=="":
+            if not STACK["stack"]["Compiler"]["Name"]=="":
+                compiler+=generate_config_line("[Compiler]",STACK["stack"]["Compiler"]["Name"])
+            if not STACK["stack"]["Compiler"]["Version"]=="":
+                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["Compiler"]["Version"])
         cfg_part+=compiler
 
-        if not STACK["stack"]["mpi"]=="":
-            if not STACK["stack"]["mpi"]["Name"]=="":
-                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["mpi"]["Name"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["mpi"]["Version"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["mpi"]["Flags"])
+        if not STACK["stack"]["MPI"]=="":
+            if not STACK["stack"]["MPI"]["Name"]=="":
+                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["MPI"]["Name"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["MPI"]["Version"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["MPI"]["Flags"])
             cfg_part+=compiler
         
-        if not STACK["packages"][package_type][spec]["Name"]=="":
-            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["packages"][package_type][spec]["Name"])
-        if not STACK["packages"][package_type][spec]["Version"]=="":
-            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["packages"][package_type][spec]["Version"])
-        if not package_type=="compiler" and not STACK["packages"][package_type][spec]["Flags"]=="":
-                cfg_part+=generate_config_line("[{} Flags].format(package_type)",STACK["packages"][package_type][spec]["Flags"])
+        if not STACK["testing"][spec]["Name"]=="":
+            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["testing"][spec]["Name"])
+        if not STACK["testing"][spec]["Version"]=="":
+            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["testing"][spec]["Version"])
+        if not package_type=="Compiler" and not STACK["testing"][spec]["Flags"]=="":
+                cfg_part+=generate_config_line("[{} Flags]".format(package_type),STACK["testing"][spec]["Flags"])
         cfg_part+=compiler
         
     return cfg_part
@@ -528,28 +560,28 @@ def generate_hpcg_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
         compiler=""
-        if not STACK["stack"]["compiler"]=="":
-            if not STACK["stack"]["compiler"]["Name"]=="":
-                compiler+=generate_config_line("[Compiler]",STACK["stack"]["compiler"]["Name"])
-            if not STACK["stack"]["compiler"]["Version"]=="":
-                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["compiler"]["Version"])
+        if not STACK["stack"]["Compiler"]=="":
+            if not STACK["stack"]["Compiler"]["Name"]=="":
+                compiler+=generate_config_line("[Compiler]",STACK["stack"]["Compiler"]["Name"])
+            if not STACK["stack"]["Compiler"]["Version"]=="":
+                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["Compiler"]["Version"])
         cfg_part+=compiler
 
-        if not STACK["stack"]["mpi"]=="":
-            if not STACK["stack"]["mpi"]["Name"]=="":
-                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["mpi"]["Name"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["mpi"]["Version"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["mpi"]["Flags"])
+        if not STACK["stack"]["MPI"]=="":
+            if not STACK["stack"]["MPI"]["Name"]=="":
+                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["MPI"]["Name"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["MPI"]["Version"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["MPI"]["Flags"])
             cfg_part+=compiler
         
-        if not STACK["packages"][package_type][spec]["Name"]=="":
-            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["packages"][package_type][spec]["Name"])
-        if not STACK["packages"][package_type][spec]["Version"]=="":
-            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["packages"][package_type][spec]["Version"])
-        if not package_type=="compiler" and not STACK["packages"][package_type][spec]["Flags"]=="":
-                cfg_part+=generate_config_line("[{} Flags].format(package_type)",STACK["packages"][package_type][spec]["Flags"])
+        if not STACK["testing"][spec]["Name"]=="":
+            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["testing"][spec]["Name"])
+        if not STACK["testing"][spec]["Version"]=="":
+            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["testing"][spec]["Version"])
+        if not package_type=="Compiler" and not STACK["testing"][spec]["Flags"]=="":
+                cfg_part+=generate_config_line("[{} Flags]".format(package_type),STACK["testing"][spec]["Flags"])
         cfg_part+=compiler
 
     elif part=="parameters":
@@ -562,37 +594,37 @@ def generate_hpcc_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
         compiler=""
-        if not STACK["stack"]["compiler"]=="":
-            if not STACK["stack"]["compiler"]["Name"]=="":
-                compiler+=generate_config_line("[Compiler]",STACK["stack"]["compiler"]["Name"])
-            if not STACK["stack"]["compiler"]["Version"]=="":
-                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["compiler"]["Version"])
+        if not STACK["stack"]["Compiler"]=="":
+            if not STACK["stack"]["Compiler"]["Name"]=="":
+                compiler+=generate_config_line("[Compiler]",STACK["stack"]["Compiler"]["Name"])
+            if not STACK["stack"]["Compiler"]["Version"]=="":
+                compiler+=generate_config_line("[Compiler Version]",STACK["stack"]["Compiler"]["Version"])
         cfg_part+=compiler
 
-        if not STACK["stack"]["mpi"]=="":
-            if not STACK["stack"]["mpi"]["Name"]=="":
-                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["mpi"]["Name"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["mpi"]["Version"])
-            if not STACK["stack"]["mpi"]["Version"]=="":
-                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["mpi"]["Flags"])
+        if not STACK["stack"]["MPI"]=="":
+            if not STACK["stack"]["MPI"]["Name"]=="":
+                cfg_part+=generate_config_line("[mpi]",STACK["stack"]["MPI"]["Name"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Version]",STACK["stack"]["MPI"]["Version"])
+            if not STACK["stack"]["MPI"]["Version"]=="":
+                cfg_part+=generate_config_line("[mpi Flags]",STACK["stack"]["MPI"]["Flags"])
             cfg_part+=compiler
 
-        if not STACK["stack"]["blas"]=="":
-            if not STACK["stack"]["blas"]["Name"]=="":
-                cfg_part+=generate_config_line("[blas]",STACK["stack"]["blas"]["Name"])
-            if not STACK["stack"]["blas"]["Version"]=="":
-                cfg_part+=generate_config_line("[blas Version]",STACK["stack"]["blas"]["Version"])
-            if not STACK["stack"]["blas"]["Version"]=="":
-                cfg_part+=generate_config_line("[blas Flags]",STACK["stack"]["blas"]["Flags"])
+        if not STACK["stack"]["BLAS"]=="":
+            if not STACK["stack"]["BLAS"]["Name"]=="":
+                cfg_part+=generate_config_line("[blas]",STACK["stack"]["BLAS"]["Name"])
+            if not STACK["stack"]["BLAS"]["Version"]=="":
+                cfg_part+=generate_config_line("[blas Version]",STACK["stack"]["BLAS"]["Version"])
+            if not STACK["stack"]["BLAS"]["Version"]=="":
+                cfg_part+=generate_config_line("[blas Flags]",STACK["stack"]["BLAS"]["Flags"])
             cfg_part+=compiler
         
-        if not STACK["packages"][package_type][spec]["Name"]=="":
-            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["packages"][package_type][spec]["Name"])
-        if not STACK["packages"][package_type][spec]["Version"]=="":
-            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["packages"][package_type][spec]["Version"])
-        if not package_type=="compiler" and not STACK["packages"][package_type][spec]["Flags"]=="":
-                cfg_part+=generate_config_line("[{} Flags].format(package_type)",STACK["packages"][package_type][spec]["Flags"])
+        if not STACK["testing"][spec]["Name"]=="":
+            cfg_part+=generate_config_line("[{}]".format(package_type),STACK["testing"][spec]["Name"])
+        if not STACK["testing"][spec]["Version"]=="":
+            cfg_part+=generate_config_line("[{} Version]".format(package_type),STACK["testing"][spec]["Version"])
+        if not package_type=="Compiler" and not STACK["testing"][spec]["Flags"]=="":
+                cfg_part+=generate_config_line("[{} Flags]".format(package_type),STACK["testing"][spec]["Flags"])
         cfg_part+=compiler
     elif part=="parameters":
         for line in STACK["config"]["benchmark parameters"]["hpcc"]:
