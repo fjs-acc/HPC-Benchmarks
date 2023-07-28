@@ -41,6 +41,8 @@ import traceback
 #these are just simple name-reservations/declarations (*not* initializations), otherwise some function definitions would have to be changed
 LOC, SPACK_XPTH, error_stack, cfg_profiles, form_factor_menu, t_width, ml, mr, menutxt, dbg, menu_ctrl, full_bin_paths, auto_space_normalization, SPACK_SEARCH_ROOT, termination_logging, path_logging, info_feed, test_only, check_python_setting = (0,)*19
 
+STACK={}
+
 """
 Initialization of Colorcodes 
 """
@@ -195,6 +197,8 @@ def cl_arg():
     FCOL[15]+'Optimize a softwarestack\n'+FEND)
     parser.add_argument('-e','--evaluate',nargs=1,type=str,help=''+
     FCOL[15]+'evaluating runs\n'+FEND)
+
+    global STACK
     ###/NEW ADDITION###
     
     args= parser.parse_args()
@@ -311,7 +315,6 @@ def cl_arg():
             print(menutxt)
     ###NEW###
     if args.optimize:
-        
         print("evaluating...")
         #Checking if the stack exists as a txt file in the stacks directory
         if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
@@ -326,10 +329,12 @@ def cl_arg():
                 
 
         #Loading the stack config
-        global STACK
+        #global STACK
         STACK={}        
         with open("{}/stacks/{}.json".format(LOC,args.evaluate[0])) as stack:
             STACK = json.load(stack)
+
+        quit()
         
         
         
@@ -351,7 +356,7 @@ def cl_arg():
                 
 
         #Loading the stack config
-        global STACK
+        #global STACK
         STACK={}        
         with open("{}/stacks/{}.json".format(LOC,args.evaluate[0])) as stack:
             STACK = json.load(stack)

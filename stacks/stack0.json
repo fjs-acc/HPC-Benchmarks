@@ -6,8 +6,8 @@
     },
     "config":{
         "meta settings":{
-            "[iterations]":0,
-            "[aggregation: e.g. avg, max]":0
+            "[iterations]":2,
+            "[aggregation: e.g. avg, max]":"avg"
         },
         "bm_version":{
             "hpl":"2.3",
