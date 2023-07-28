@@ -311,11 +311,29 @@ def cl_arg():
             print(menutxt)
     ###NEW###
     if args.optimize:
-        '''
-        -o stack
-        sbatch script.sh
         
-        '''
+        print("evaluating...")
+        #Checking if the stack exists as a txt file in the stacks directory
+        if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
+            print("stack not found")
+            quit()
+        else:
+            if not os.path.exists("{}/stacks/{}".format(LOC,args.evaluate[0])): 
+                print("creating directory {}/stacks/{}".format(LOC,args.evaluate[0]))
+                os.mkdir("{}/stacks/{}".format(LOC,args.evaluate[0]))
+            else:
+                print("directory already exists")
+                
+
+        #Loading the stack config
+        global STACK
+        STACK={}        
+        with open("{}/stacks/{}.json".format(LOC,args.evaluate[0])) as stack:
+            STACK = json.load(stack)
+        
+        
+        
+        
 
 ############MAIN ADDITIONS################
     if args.evaluate:
@@ -362,7 +380,8 @@ def cl_arg():
                 #Installing the generated benchmark
                 cmd="python3 {}/sb.py -i {} {}".format(LOC,bm,",".join(list_to_test))
                 #output=shell(cmd)
-                #jobid=t.split("Submitted batch job ")[1]
+                #jobid=output.split("Submitted batch job ")[1]
+                #jobid=jobid.split("\n")[0]
                 #wait_for_job(jobid)
 
                 #print("executing command {}".format(cmd))
@@ -376,6 +395,8 @@ def cl_arg():
                 #filter out the package where the benchmark installation failed
                 profiles=cfg_profiles[tag_id_switcher(bm)]
                 unavailable_configs=list(filter(lambda p: p[0][2]=="no path found!",profiles))
+                
+                #necessary to remove the specs through mapping
                 a=list(map(remove_uninstalled_spec,unavailable_configs))
                 #print("{} {} are available {}".format(bm,pkg_type,unavailable_configs))
                 #print("available specs: {}".format(list(STACK["testing"].keys())))
@@ -439,6 +460,7 @@ def remove_uninstalled_spec(unavailable_config):
     generated_configs=list(STACK["testing"].keys())
     pkg=unavailable_config[0][0].split("_cfg_")[1].split(".txt")[0]
     if pkg in generated_configs:
+        print("installation for config {} failed".format(pkg))
         STACK["testing"].pop(pkg,None)
 
 def wait_for_job(JobID):
@@ -487,6 +509,7 @@ def generate_config_line(key,value):
 def generate_hpl_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
+        cfg_part+=generate_config_line("[HPL Version]",STACK["config"]["bm_version"]["hpl"])
         compiler=""
         if not STACK["stack"]["Compiler"]=="":
             if not STACK["stack"]["Compiler"]["Name"]=="":
@@ -529,6 +552,7 @@ def generate_hpl_config(package_type,spec,part):
 def generate_osu_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
+        cfg_part+=generate_config_line("[OSU Version]",STACK["config"]["bm_version"]["osu"])
         compiler=""
         if not STACK["stack"]["Compiler"]=="":
             if not STACK["stack"]["Compiler"]["Name"]=="":
@@ -559,6 +583,7 @@ def generate_osu_config(package_type,spec,part):
 def generate_hpcg_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
+        cfg_part+=generate_config_line("[HPCG Version]",STACK["config"]["bm_version"]["hpcg"])
         compiler=""
         if not STACK["stack"]["Compiler"]=="":
             if not STACK["stack"]["Compiler"]["Name"]=="":
@@ -593,6 +618,7 @@ def generate_hpcg_config(package_type,spec,part):
 def generate_hpcc_config(package_type,spec,part):
     cfg_part=""
     if part=="dependencies":
+        cfg_part+=generate_config_line("[HPCC Version]",STACK["config"]["bm_version"]["hpcc"])
         compiler=""
         if not STACK["stack"]["Compiler"]=="":
             if not STACK["stack"]["Compiler"]["Name"]=="":

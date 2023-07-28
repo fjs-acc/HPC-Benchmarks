@@ -9,87 +9,91 @@
             "[iterations]":0,
             "[aggregation: e.g. avg, max]":0
         },
-        "base dependencies":{
+        "bm_version":{
+            "hpl":"2.3",
+            "osu":"5.9",
+            "hpcg":"3.1",
+            "hpcc":"1.5.0"
             
         },
         "benchmark parameters":{
             "hpl":{
-                "[0]":0,
-                "[1]":0,
-                "[#Matrizen]":0,
-                "[Matrixgröße(n)]":0,
-                "[#Blöcke]":0,
-                "[Blockgröße(n)]":0,
-                "[Mapping: 0=row;1=column]":0,
-                "[#Grids: PxQ]":0,
-                "[Ps]":0,
-                "[Qs]":0,
-                "[Genauigkeit: <0 <=> aus]":0,
-                "[2]":0,
-                "[3]":0,
-                "[4]":0,
-                "[5]":0,
-                "[6]":0,
-                "[7]":0,
-                "[8]":0,
-                "[9]":0,
-                "[10]":0,
-                "[11]":0,
-                "[12]":0,
-                "[13]":0,
-                "[14]":0,
-                "[15]":0,
-                "[16]":0,
-                "[17]":0,
-                "[18]":0,
-                "[19]":0
+                "[0]":"HPL.out",
+                "[1]":"6",
+                "[#Matrizen]":"1",
+                "[Matrixgröße(n)]":"81792",
+                "[#Blöcke]":"1",
+                "[Blockgröße(n)]":"192",
+                "[Mapping: 0=row;1=column]":"0",
+                "[#Grids: PxQ]":"1",
+                "[Ps]":"6",
+                "[Qs]":"8",
+                "[Genauigkeit: <0 <=> aus]":"16.0",
+                "[2]":"1",
+                "[3]":"2",
+                "[4]":"1",
+                "[5]":"4",
+                "[6]":"1",
+                "[7]":"2",
+                "[8]":"1",
+                "[9]":"1",
+                "[10]":"1",
+                "[11]":"1",
+                "[12]":"1",
+                "[13]":"1",
+                "[14]":"2",
+                "[15]":"64",
+                "[16]":"0",
+                "[17]":"0",
+                "[18]":"1",
+                "[19]":"8"
             },
             "hpcg":{
-                "[problem size]":0,
-                "[time target in s]":0
+                "[problem size]":"280 280 280",
+                "[time target in s]":"300s"
             },
             "hpcc":{
-                "[0]":0,
-                "[1]":0,
-                "[#Matrizen]":0,
-                "[Matrixgröße(n)]":0,
-                "[#Blöcke]":0,
-                "[Blockgröße(n)]":0,
-                "[Mapping: 0=row;1=column]":0,
-                "[#Grids: PxQ]":0,
-                "[Ps]":0,
-                "[Qs]":0,
-                "[Genauigkeit: <0 <=> aus]":0,
-                "[2]":0,
-                "[3]":0,
-                "[4]":0,
-                "[5]":0,
-                "[6]":0,
-                "[7]":0,
-                "[8]":0,
-                "[9]":0,
-                "[10]":0,
-                "[11]":0,
-                "[12]":0,
-                "[13]":0,
-                "[14]":0,
-                "[15]":0,
-                "[16]":0,
-                "[17]":0,
-                "[18]":0,
-                "[19]":0,
-                "[Seperator]":0,
+                "[0]":"HPL.out",
+                "[1]":"6",
+                "[#Matrizen]":"1",
+                "[Matrixgröße(n)]":"81792",
+                "[#Blöcke]":"1",
+                "[Blockgröße(n)]":"192",
+                "[Mapping: 0=row;1=column]":"0",
+                "[#Grids: PxQ]":"1",
+                "[Ps]":"6",
+                "[Qs]":"8",
+                "[Genauigkeit: <0 <=> aus]":"16.0",
+                "[2]":"1",
+                "[3]":"2",
+                "[4]":"1",
+                "[5]":"4",
+                "[6]":"1",
+                "[7]":"2",
+                "[8]":"1",
+                "[9]":"1",
+                "[10]":"1",
+                "[11]":"1",
+                "[12]":"1",
+                "[13]":"1",
+                "[14]":"2",
+                "[15]":"64",
+                "[16]":"0",
+                "[17]":"0",
+                "[18]":"1",
+                "[19]":"8",
+                "[##### This line (no. 32) is ignored (it serves as a separator). ######]":"0",
                 "[Number of additional problem sizes for PTRANS]":0,
-                "[values of N]":"1200 10000 30000",
+                "[values of N]":"0",
                 "[number of additional blocking sizes for PTRANS]":0,
-                "[values of NB]":"40 9 8 13 13 20 16 32 64"
+                "[values of NB]":"0"
             }
         },
         "SLURM parameters":{
-            "[Partition]":0,
-            "[Nodes]":0,
-            "[Prozesse]":0,
-            "[Prozesse/Tasks per Node]":0,
+            "[Partition]":"vl-parcio",
+            "[Nodes]":"2",
+            "[Prozesse]":"48",
+            "[Prozesse/Tasks per Node]":"24",
             "[CPUs pro Prozess/Task]":0,
             "[RAM in MB/CPU]":0,
             "[Startpunkt, YYYY-MM-DD HH:MM:SS]":0,
@@ -113,11 +117,11 @@
         "Compiler":{
             "cmp1":{
                 "Name":"gcc",
-                "Version":"9.4.0"
+                "Version":"12.1.0"
             },
             "cmp2":{
                 "Name":"aocc",
-                "Version":"12.1.0"
+                "Version":"3.2.0"
             }
         },
         "MPI":{
@@ -128,8 +132,8 @@
             },
             "mpi2":{
                 "Name":"mpich",
-                "Version":"4.20.1",
-                "Flags":"+bs"
+                "Version":"4.1.2",
+                "Flags":""
             }
         },
         "BLAS":{
@@ -139,9 +143,9 @@
                 "Flags":""
             },
             "blas2":{
-                "Name":"atlas",
-                "Version":"69",
-                "Flags":"-k"
+                "Name":"flexiblas",
+                "Version":"3.3.0",
+                "Flags":""
             }
         }
 
