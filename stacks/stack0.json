@@ -4,6 +4,30 @@
         "MPI":["osu_latency","osu_bandwidth","hpcg"],
         "BLAS":["hpcc"]
     },
+    "weights":{
+        "Compiler":{
+            "hpcc":[],
+            "hpcg":[]
+        },
+        "MPI":{
+            "osu_latency":[],
+            "osu_bandwidth":[],
+            "hpcg":[]
+        },
+        "BLAS":{
+            "hpcc":[]
+        }
+    },
+
+    "results":{
+        "Compiler":{
+            "cmp1":{
+                "hpcc":[],
+                "hpcg":[]
+            }
+        }
+    },
+
     "config":{
         "meta settings":{
             "[iterations]":2,
