@@ -342,7 +342,7 @@ def cl_arg():
 
 ############MAIN ADDITIONS################
     if args.evaluate:
-        print("evaluating...")
+        print("evaluating...{}".format(args.evaluate[0]))
         #Checking if the stack exists as a txt file in the stacks directory
         if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
             print("stack not found")
@@ -360,6 +360,10 @@ def cl_arg():
         STACK={}        
         with open("{}/stacks/{}.json".format(LOC,args.evaluate[0])) as stack:
             STACK = json.load(stack)
+            STACK["log_file"]=LOC+"/stacks/{}/log.txt".format(args.evaluate[0])
+            with open(STACK["log_file"],"w") as log:
+                log.write("booting")
+            generate_stack_script()
 
         #TODO: swap for candidates
         for pkg_type in STACK["stack"]:
@@ -422,21 +426,26 @@ def cl_arg():
                 cmd="python3 {}/sb.py -w {} {}".format(LOC,bm,",".join(list_to_test))
                 print(cmd+"\n\n")
                 output=shell(cmd)
-                #jobid=t.split("Submitted batch job ")[1]
-                #wait_for_job(jobid)
                 path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
-                print(path)
+                #print(path)
                 path="es@".join(path)
-                print(path)
+                #print(path)
                 path=LOC+path.split(LOC)[1]
                 
                 print(path)
 
-                cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
-                #shell(cmd)
+                #cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
+                #output=shell(cmd)
+                #jobid=output.split("Submitted batch job ")[1]
+                #jobid=jobid.split("\n")[0]
+                #wait_for_job(jobid)
                 shutil.move(path,"{}/stacks/{}/{}".format(LOC,args.evaluate[0],pkg_type))
                 print(cmd+"\n")
-                #wait_for_job(jobid)
+
+                for pkg in STACK["testing"]:
+                    #print(analyze_results(path,pkg_type,bm,pkg))
+                    write_to_log(analyze_results(path,pkg_type,bm,pkg))            
+                
 
         #analyze benchmarks
         
@@ -461,11 +470,57 @@ def cl_arg():
         menu()
     
 ###NEW FUNCTIONS###
+def read_val_from_result(file,str):
+    return float(file.split(str[1].split("\n")[0]))
+
+
+def analyze_results(res_dir,pkg_type,bm,pkg):
+    #AN OSU DENKEN
+    res_list=[]
+    benchmark=bm
+    lines=[]
+
+    if (bm.find("osu")>-1):
+        benchmark="osu"
+
+    if benchmark == "hpcg":
+        lines=["Final Summary::HPCG result is VALID with a GFLOP/s rating of="]
+    elif benchmark == "hpcc":
+        if pkg == "BLAS":
+            lines=["HPL_Tflops=","StarDGEMM_Gflops="]
+        else:
+            lines=["MPIRandomAccess_GUPs=","MPIRandomAccess_ExeUpdates="]
+    elif benchmark == "osu":
+        lines=["1","16"]
+
+
+    for i in int(range(STACK["config"]["meta settings"]["[iterations]"])):
+        res_list.append([])
+        with open(res_dir+"/{}#{}_cfg_{}.txt".format(i+1,benchmark,pkg),"r") as file:
+            res=file.read()
+            for str in lines:
+                res_list[i].append(read_val_from_result(res,str))
+    
+    return res_list
+
+
+def generate_stack_script():
+    with open(LOC+"/optimization_script.sh","w") as script:
+        batchtxt=write_slurm_params(cfg_profiles[0][0],3)
+        batchtxt+='#SBATCH --job-name=stack_building '+'\n'
+        batchtxt+='#SBATCH --output=/dev/null\n'
+        batchtxt+="insert command here"
+        script.write(batchtxt)
+
+def write_to_log(txt):
+    with open(STACK['log_file'],"a") as file:
+        file.write(txt+"\n")
+
 def remove_uninstalled_spec(unavailable_config):
     generated_configs=list(STACK["testing"].keys())
     pkg=unavailable_config[0][0].split("_cfg_")[1].split(".txt")[0]
     if pkg in generated_configs:
-        print("installation for config {} failed".format(pkg))
+        write_to_log("installation for config {} failed".format(pkg))
         STACK["testing"].pop(pkg,None)
 
 def wait_for_job(JobID):
@@ -2250,9 +2305,11 @@ def execute_line(bench_id, bin_path, node_count, proc_count, extra_args, output,
         txt+='mpirun -n {ncount} osu_{exargs}'.format(ncount=node_count,exargs=extra_args)
     elif bench_id==HPCG_ID:
         #All results are automatically saved in the execution directory        
-        txt+='cd {}'.format(res_dir[:res_dir.rfind('/')+1]+res_dir[res_dir.rfind('#')+1:])+'\n'
-        txt+='mpirun -np {pcount} {bpath}xhpcg; '.format(pcount = proc_count, bpath = bin_reference)
-        txt+='mv HPCG*.txt {}.out; mv hpcg*T*.txt hpcg_meta@{}.txt'.format(output[output.rfind('/')+1:-4],output[output.rfind('/')+1:-4])
+        txt+='cd {}'.format(bin_path)+'\n'
+        txt+='mpirun -np {pcount} xhpcg\n'.format(pcount = proc_count)        
+        txt+='mv HPCG*.txt {}/{}.out\n'.format(res_dir[:res_dir.rfind('/')+1]+res_dir[res_dir.rfind('#')+1:],output[output.rfind('/')+1:-4])
+        txt+='mv hpcg*T*.txt {}/hpcg_meta@{}.txt'.format(res_dir[:res_dir.rfind('/')+1]+res_dir[res_dir.rfind('#')+1:],output[output.rfind('/')+1:-4])
+    
     ###TODO HPCC und OPENMPI FIX###
     #elif bench_id==HPCC_ID:
     #    txt+='cd {}'.format(res_dir[:res_dir.rfind('/')+1]+res_dir[res_dir.rfind('#')+1:])+'\n'

@@ -83,6 +83,8 @@ def file_w(name, txt, pos):
 
 
 def prep_source_line(line):
+    if (line.find("##### This line (no. 32) is ignored (it serves as a separator). ######")>-1):
+        return "##### This line (no. 32) is ignored (it serves as a separator). ######"
     return line.replace('[','').replace(']','')
 
 dat_transfer()
