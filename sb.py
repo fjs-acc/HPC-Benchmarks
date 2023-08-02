@@ -362,11 +362,12 @@ def cl_arg():
             STACK = json.load(stack)
             STACK["log_file"]=LOC+"/stacks/{}/log.txt".format(args.evaluate[0])
             with open(STACK["log_file"],"w") as log:
-                log.write("booting")
-            generate_stack_script()
+                log.write("booting\n")
+            #generate_stack_script()
 
         #TODO: swap for candidates
         for pkg_type in STACK["stack"]:
+            write_to_log("Testing package type {}".format(pkg_type))
             install_bms=set()
             STACK["testing"]=copy.deepcopy(STACK["packages"][pkg_type])
             run_bms=set(STACK["bms_for_package"][pkg_type])
@@ -377,9 +378,10 @@ def cl_arg():
                     install_bms.add(bm)
 
             print("bms to run:{}\nbms to install: {}".format(run_bms,install_bms))
-
+            write_to_log("bms to run:{}\nbms to install: {}".format(run_bms,install_bms))
             #Installing the benchmarks
             for bm in install_bms:
+                write_to_log("Generating {} for {}".format(bm,pkg_type))
                 generate_configs(bm,pkg_type)
                 #loading the configs requires a reset
                 #TODO: Limit it to changed benchmark
@@ -387,11 +389,20 @@ def cl_arg():
                 list_to_test=list(STACK["testing"].keys())
 
                 #Installing the generated benchmark
+                write_to_log("python3 {}/sb.py -i {} {}".format(LOC,bm,",".join(list_to_test)))
                 cmd="python3 {}/sb.py -i {} {}".format(LOC,bm,",".join(list_to_test))
                 #output=shell(cmd)
-                #jobid=output.split("Submitted batch job ")[1]
-                #jobid=jobid.split("\n")[0]
-                #wait_for_job(jobid)
+                if output.find("Submitted batch job ")>-1:
+                    jobid=42
+                    write_to_log("Installation started, waiting for job {} to finish")
+                    #jobid=output.split("Submitted batch job ")[1]
+                    #jobid=jobid.split("\n")[0]
+                    write_to_log("Installation started, waiting for job {} to finish".format(jobid))
+                    wait_for_job(jobid)
+                else:
+                    write_to_log("No installation was possible, quitting now")
+                    quit()
+
 
                 #print("executing command {}".format(cmd))
 
@@ -406,6 +417,7 @@ def cl_arg():
                 unavailable_configs=list(filter(lambda p: p[0][2]=="no path found!",profiles))
                 
                 #necessary to remove the specs through mapping
+                write_to_log("removing uninstalled configs")
                 a=list(map(remove_uninstalled_spec,unavailable_configs))
                 #print("{} {} are available {}".format(bm,pkg_type,unavailable_configs))
                 #print("available specs: {}".format(list(STACK["testing"].keys())))
@@ -421,7 +433,7 @@ def cl_arg():
             
             for bm in run_bms:
                 list_to_test=list(STACK["testing"].keys())
-
+                write_to_log("running benchmarks for {}".format(list_to_test))
                 #Installing the generated benchmark
                 cmd="python3 {}/sb.py -w {} {}".format(LOC,bm,",".join(list_to_test))
                 print(cmd+"\n\n")
@@ -434,17 +446,18 @@ def cl_arg():
                 
                 print(path)
 
-                #cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
-                #output=shell(cmd)
+                cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
+                output=shell(cmd)
                 #jobid=output.split("Submitted batch job ")[1]
                 #jobid=jobid.split("\n")[0]
                 #wait_for_job(jobid)
-                shutil.move(path,"{}/stacks/{}/{}".format(LOC,args.evaluate[0],pkg_type))
+                #shutil.move(path,"{}/stacks/{}/{}".format(LOC,args.evaluate[0],pkg_type))
                 print(cmd+"\n")
 
                 for pkg in STACK["testing"]:
                     #print(analyze_results(path,pkg_type,bm,pkg))
-                    write_to_log(analyze_results(path,pkg_type,bm,pkg))            
+                    write_to_log(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
+                    write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
                 
 
         #analyze benchmarks
