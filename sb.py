@@ -367,6 +367,11 @@ def cl_arg():
 
         #TODO: swap for candidates
         for pkg_type in STACK["stack"]:
+        
+            if pkg_type=="MPI" or pkg_type=="BLAS":
+                quit()
+
+
             write_to_log("Testing package type {}".format(pkg_type))
             install_bms=set()
             STACK["testing"]=copy.deepcopy(STACK["packages"][pkg_type])
@@ -390,15 +395,18 @@ def cl_arg():
 
                 #Installing the generated benchmark
                 write_to_log("python3 {}/sb.py -i {} {}".format(LOC,bm,",".join(list_to_test)))
+                
                 cmd="python3 {}/sb.py -i {} {}".format(LOC,bm,",".join(list_to_test))
-                #output=shell(cmd)
+                output=shell(cmd)
+                
                 if output.find("Submitted batch job ")>-1:
                     jobid=42
-                    write_to_log("Installation started, waiting for job {} to finish")
-                    #jobid=output.split("Submitted batch job ")[1]
-                    #jobid=jobid.split("\n")[0]
+                    #write_to_log("Installation started, waiting for job {} to finish")
+                    jobid=output.split("Submitted batch job ")[1]
+                    jobid=jobid.split("\n")[0]
                     write_to_log("Installation started, waiting for job {} to finish".format(jobid))
                     wait_for_job(jobid)
+                    write_to_log("Installation completed")
                 else:
                     write_to_log("No installation was possible, quitting now")
                     quit()
@@ -435,33 +443,49 @@ def cl_arg():
                 list_to_test=list(STACK["testing"].keys())
                 write_to_log("running benchmarks for {}".format(list_to_test))
                 #Installing the generated benchmark
-                cmd="python3 {}/sb.py -w {} {}".format(LOC,bm,",".join(list_to_test))
-                print(cmd+"\n\n")
-                output=shell(cmd)
-                path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
-                #print(path)
-                path="es@".join(path)
-                #print(path)
-                path=LOC+path.split(LOC)[1]
                 
-                print(path)
+                #cmd="python3 {}/sb.py -w {} {}".format(LOC,bm,",".join(list_to_test))
+                #print(cmd+"\n\n")
+                #output=shell(cmd)
+                #path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
+                #print(path)
+                #path="es@".join(path)
+                #print(path)
+                #path=LOC+path.split(LOC)[1]
+                
+                #print(path)
 
-                cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
+                cmd="python3 {}/sb.py -r {} {}".format(LOC,bm,",".join(list_to_test))
+                write_to_log(cmd)
                 output=shell(cmd)
-                #jobid=output.split("Submitted batch job ")[1]
-                #jobid=jobid.split("\n")[0]
-                #wait_for_job(jobid)
+                jobid=output.split("Submitted batch job ")[1]
+                jobid=jobid.split("\n")[0]
+                write_to_log("waiting for benchmark run {}".format(jobid))
+                wait_for_job(jobid)
+                write_to_log("benchmark run completed")
+                write_to_log("copying the results")
+                
+                path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
+                path="es@".join(path)
+                path=LOC+path.split(LOC)[1]
+                cmd="cp -r {} {}/stacks/{}/{}".format(path,LOC,args.evaluate[0],pkg_type)
+                write_to_log(cmd)
+                output=shell(cmd)
+
                 #shutil.move(path,"{}/stacks/{}/{}".format(LOC,args.evaluate[0],pkg_type))
-                print(cmd+"\n")
+                #print(cmd+"\n")
 
                 for pkg in STACK["testing"]:
                     #print(analyze_results(path,pkg_type,bm,pkg))
-                    write_to_log(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
-                    write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
-                
+                    write_to_log(path+"/{}_cfg_{}".format(bm,pkg))
+                    #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
+                    print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
+                    STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
 
-        #analyze benchmarks
-        
+            #analyze benchmarks
+            print("Analyzing result")
+            write_to_log(json.dumps(STACK,indent=2))
+            print(json.dumps(STACK,indent=2))        
             
 
 
@@ -484,7 +508,7 @@ def cl_arg():
     
 ###NEW FUNCTIONS###
 def read_val_from_result(file,str):
-    return float(file.split(str[1].split("\n")[0]))
+    return float(file.split(str)[1].split("\n")[0])
 
 
 def analyze_results(res_dir,pkg_type,bm,pkg):
@@ -507,9 +531,9 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
         lines=["1","16"]
 
 
-    for i in int(range(STACK["config"]["meta settings"]["[iterations]"])):
+    for i in range(int(STACK["config"]["meta settings"]["[iterations]"])):
         res_list.append([])
-        with open(res_dir+"/{}#{}_cfg_{}.txt".format(i+1,benchmark,pkg),"r") as file:
+        with open(res_dir+"/{}#{}_cfg_{}.out".format(i+1,benchmark,pkg),"r") as file:
             res=file.read()
             for str in lines:
                 res_list[i].append(read_val_from_result(res,str))
@@ -538,7 +562,7 @@ def remove_uninstalled_spec(unavailable_config):
 
 def wait_for_job(JobID):
     while subprocess.run("squeue -h", stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout.decode().find(JobID)>-1:
-        print("still installing...")
+        #print("still installing...")
         time.sleep(5)
     print("install script finished")
 
@@ -1648,7 +1672,9 @@ def get_target_path(spec):
     global menutxt
     pth = shell(SPACK_XPTH+' find --paths '+spec)
     _ = pth.find('/home')
-    r = (pth[_:]).strip()
+    #r = (pth[_:]).strip()
+    ###NEW####
+    r = (pth[_:]).strip().split("\n")[0]
     if r!='':
         return r+'/bin'
     else:
