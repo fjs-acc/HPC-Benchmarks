@@ -16,6 +16,7 @@
 
 import json
 import copy
+import functools
 
 import os
 import os.path
@@ -481,10 +482,17 @@ def cl_arg():
                     #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
                     print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
                     STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
+                    
+                    STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
 
             #analyze benchmarks
             print("Analyzing result")
-            write_to_log(json.dumps(STACK,indent=2))
+            #write_to_log(json.dumps(STACK,indent=2))
+
+            stack_pkg=best_pkg(pkg_type)
+            write_to_log("best package of type {}: {}".format(pkg_type,stack_pkg))
+            STACK["stack"][pkg_type]=stack_pkg
+
             print(json.dumps(STACK,indent=2))        
             
 
@@ -507,6 +515,60 @@ def cl_arg():
         menu()
     
 ###NEW FUNCTIONS###
+def best_pkg(pkg_type):
+    best_pkg={}
+    total_weight=0.0
+    weights=[]
+    #print(STACK["weights"]["Compiler"].items())
+    for bm,weight_list in STACK["weights"][pkg_type].items():
+        liste=[elem[2] for elem in weight_list]
+        print(liste)
+        weights.append(liste)
+        print(weights)
+        total_weight=functools.reduce(lambda s,b:s+abs(b),liste,total_weight)
+
+    print(total_weight)
+    print(weights)
+    print("comparing")
+    iterations=int(STACK["config"]["meta settings"]["[iterations]"])
+    for pkg in STACK["testing"]:
+        print(pkg)
+        if best_pkg=={}:
+            best_pkg=pkg
+        else:
+            score=0
+            bms=[benchmark for benchmark in STACK["bms_for_package"][pkg_type]]
+
+            for index,bm in enumerate(bms):
+                for i in range(len(weights[index])):
+                    val1=STACK["testing"][best_pkg][bm][iterations][i]
+                    val2=STACK["testing"][pkg][bm][iterations][i]
+                    print(bm,val1,val2,weights[index][i])
+                    if weights[index][i]<0:
+                        print("score part",val2/val1 * weights[index][i])
+                        score+=val2/val1 * weights[index][i]
+                    else:
+                        score+=val1/val2 * weights[index][i]
+                        print("score part",val1/val2 * weights[index][i])
+            if score<total_weight:
+                best_pkg=pkg
+            print(score,total_weight)
+            #Compare the current with the best package
+
+    print(best_pkg)
+
+    print(total_weight)
+    print("weights",weights)
+    return best_pkg
+
+def get_averages(pkg,bm):
+    print(pkg,bm)
+    cur_list=STACK["testing"][pkg][bm]
+    print(cur_list)
+    res=list(map(lambda i:functools.reduce(lambda a,b:a+b[i], cur_list,0)/len(cur_list),[i for i in range(len(cur_list[0]))]))
+    print(bm,"averag",STACK["testing"][pkg][bm][2])
+    return res
+
 def read_val_from_result(file,str):
     return float(file.split(str)[1].split("\n")[0])
 
@@ -517,7 +579,7 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
     benchmark=bm
     lines=[]
 
-    if (bm.find("osu")>-1):
+    '''if (bm.find("osu")>-1):
         benchmark="osu"
 
     if benchmark == "hpcg":
@@ -528,7 +590,9 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
         else:
             lines=["MPIRandomAccess_GUPs=","MPIRandomAccess_ExeUpdates="]
     elif benchmark == "osu":
-        lines=["1","16"]
+        lines=["1","16"]'''
+    line=[elem[1] for elem in STACK["weights"][pkg_type][bm]]
+
 
 
     for i in range(int(STACK["config"]["meta settings"]["[iterations]"])):
