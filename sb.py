@@ -369,8 +369,8 @@ def cl_arg():
         #TODO: swap for candidates
         for pkg_type in STACK["stack"]:
         
-            if pkg_type=="MPI" or pkg_type=="BLAS":
-                quit()
+            #if pkg_type=="MPI" or pkg_type=="BLAS":
+            #    quit()
 
 
             write_to_log("Testing package type {}".format(pkg_type))
@@ -477,13 +477,23 @@ def cl_arg():
                 #print(cmd+"\n")
 
                 for pkg in STACK["testing"]:
-                    #print(analyze_results(path,pkg_type,bm,pkg))
-                    write_to_log(path+"/{}_cfg_{}".format(bm,pkg))
-                    #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
-                    print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
-                    STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
+                    if bm.find("osu")>-1:
+                        #print(analyze_results(path,pkg_type,bm,pkg))
+                        write_to_log(path+"/{}_cfg_{}".format("osu",pkg))
+                        #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
+                        print(analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg))
+                        STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg)
                     
-                    STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
+                        STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
+
+                    else:
+                        #print(analyze_results(path,pkg_type,bm,pkg))
+                        write_to_log(path+"/{}_cfg_{}".format(bm,pkg))
+                        #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
+                        print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
+                        STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
+                    
+                        STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
 
             #analyze benchmarks
             print("Analyzing result")
@@ -491,7 +501,7 @@ def cl_arg():
 
             stack_pkg=best_pkg(pkg_type)
             write_to_log("best package of type {}: {}".format(pkg_type,stack_pkg))
-            STACK["stack"][pkg_type]=stack_pkg
+            STACK["stack"][pkg_type]=STACK["testing"][stack_pkg]
 
             print(json.dumps(STACK,indent=2))        
             
@@ -566,7 +576,7 @@ def get_averages(pkg,bm):
     cur_list=STACK["testing"][pkg][bm]
     print(cur_list)
     res=list(map(lambda i:functools.reduce(lambda a,b:a+b[i], cur_list,0)/len(cur_list),[i for i in range(len(cur_list[0]))]))
-    print(bm,"averag",STACK["testing"][pkg][bm][2])
+    #print(bm,"averag",STACK["testing"][pkg][bm][2])
     return res
 
 def read_val_from_result(file,str):
@@ -579,9 +589,9 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
     benchmark=bm
     lines=[]
 
-    '''if (bm.find("osu")>-1):
+    if (bm.find("osu")>-1):
         benchmark="osu"
-
+    '''
     if benchmark == "hpcg":
         lines=["Final Summary::HPCG result is VALID with a GFLOP/s rating of="]
     elif benchmark == "hpcc":
@@ -591,8 +601,9 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
             lines=["MPIRandomAccess_GUPs=","MPIRandomAccess_ExeUpdates="]
     elif benchmark == "osu":
         lines=["1","16"]'''
-    line=[elem[1] for elem in STACK["weights"][pkg_type][bm]]
-
+    lines=[elem[1] for elem in STACK["weights"][pkg_type][bm]]
+    print("reading the following lines:")
+    print(lines)
 
 
     for i in range(int(STACK["config"]["meta settings"]["[iterations]"])):
