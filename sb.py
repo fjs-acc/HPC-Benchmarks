@@ -17,6 +17,7 @@
 import json
 import copy
 import functools
+from tabulate import tabulate
 
 import os
 import os.path
@@ -495,6 +496,17 @@ def cl_arg():
                     
                         STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
 
+                    write_to_log("Results of {}, type {}, benchmark {}".format(pkg,pkg_type,bm))
+                    table=[["bm run",*[elem[0] for elem in STACK["weights"][pkg_type][bm]]]]
+                    for i in range(len(STACK["testing"][pkg][bm])):
+                        line=[]
+                        if i==STACK["config"]["meta settings"]["[iterations]"]:
+                            line.append("average")
+                        else:
+                            line.append("{} run {}".format(bm,str(i+1)))
+                    write_to_log(tabulate(table,headers="firstrow",tablefmt="grid"))
+                    write_to_log("\n")
+
             #analyze benchmarks
             print("Analyzing result")
             #write_to_log(json.dumps(STACK,indent=2))
@@ -529,6 +541,11 @@ def best_pkg(pkg_type):
     best_pkg={}
     total_weight=0.0
     weights=[]
+
+    #headers,avg_1,avg_2,ratio,weight,weighted ratio
+    table=[[],[],[],[],[],[]]
+    table[0].append("data")
+    
     #print(STACK["weights"]["Compiler"].items())
     for bm,weight_list in STACK["weights"][pkg_type].items():
         liste=[elem[2] for elem in weight_list]
@@ -536,6 +553,11 @@ def best_pkg(pkg_type):
         weights.append(liste)
         print(weights)
         total_weight=functools.reduce(lambda s,b:s+abs(b),liste,total_weight)
+
+        table[4].extend(liste)
+        table[0].extend([elem[0] for elem in weight_list])
+
+    write_to_log("headers:",json.dumps(table[0]))    
 
     print(total_weight)
     print(weights)
@@ -549,19 +571,48 @@ def best_pkg(pkg_type):
             score=0
             bms=[benchmark for benchmark in STACK["bms_for_package"][pkg_type]]
 
+            write_to_log("comparing {} and {}".format(best_pkg,pkg))
+            table[1]=[pkg]
+            table[2]=[best_pkg]
+            table[3]=["ratio"]
+            table[5]=["weighted ratio"]
+
             for index,bm in enumerate(bms):
                 for i in range(len(weights[index])):
-                    val1=STACK["testing"][best_pkg][bm][iterations][i]
-                    val2=STACK["testing"][pkg][bm][iterations][i]
-                    print(bm,val1,val2,weights[index][i])
+                    
+                    val_best_pkg=STACK["testing"][best_pkg][bm][i][iterations]
+                    val_pkg=STACK["testing"][pkg][bm][i][iterations]
+                    
+                    table[1].append(val_pkg)
+                    table[2].append(val_best_pkg)
+                    ratio=0
+                    w=0
+
+                    print(bm,val_pkg,val_best_pkg,weights[index][i])
                     if weights[index][i]<0:
-                        print("score part",val2/val1 * weights[index][i])
-                        score+=val2/val1 * weights[index][i]
+                        ratio=val_best_pkg/val_pkg
                     else:
-                        score+=val1/val2 * weights[index][i]
-                        print("score part",val1/val2 * weights[index][i])
-            if score<total_weight:
+                        ratio=val_pkg/val_best_pkg
+
+                    w=weights[index][i]
+                    w_ratio=ratio*abs(w)
+                    score+=w_ratio
+
+                    table[1].append(val_pkg)
+                    table[2].append(val_best_pkg)
+                    table[3].append(ratio)
+                    table[5].append(w_ratio)
+
+            write_to_log(tabulate(table,headers="firstrow",tablefmt="grid"))
+            write_to_log("\n")
+
+            score=score/total_weight
+            if score>1:
                 best_pkg=pkg
+                write_to_log("{} achieved a better result than {} with a score of ".format(pkg,best_pkg,str(score)))
+            else:
+                write_to_log("{} achieved a worse result than {} with a score of ".format(pkg,best_pkg,str(score)))
+
             print(score,total_weight)
             #Compare the current with the best package
 
@@ -626,7 +677,8 @@ def generate_stack_script():
 
 def write_to_log(txt):
     with open(STACK['log_file'],"a") as file:
-        file.write(txt+"\n")
+        file.write(txt)
+        file.write("\n")
 
 def remove_uninstalled_spec(unavailable_config):
     generated_configs=list(STACK["testing"].keys())
@@ -636,10 +688,12 @@ def remove_uninstalled_spec(unavailable_config):
         STACK["testing"].pop(pkg,None)
 
 def wait_for_job(JobID):
+    now=datetime.datetime.now()
+    write_to_log("Waiting since {}".format(str(now)))
     while subprocess.run("squeue -h", stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True).stdout.decode().find(JobID)>-1:
         #print("still installing...")
         time.sleep(5)
-    print("install script finished")
+    write_to_log("Job completed in {}".format(str(datetime.datetime.now()-now)))
 
 def generate_configs(bm,package_type):
     config_dir=LOC+"/configs/"+bm
