@@ -195,7 +195,7 @@ def cl_arg():
     '           -c all\n'+FEND+
     FCOL[15]+'<info>    '+FEND+'please consider saving relevant project results beforehand\n'+FEND)
     ###NEW ADDITION###
-    parser.add_argument('-o','--optimize',nargs='*',type=str,help=''+
+    parser.add_argument('-o','--optimize',nargs=1,type=str,help=''+
     FCOL[15]+'Optimize a softwarestack\n'+FEND)
     parser.add_argument('-e','--evaluate',nargs=1,type=str,help=''+
     FCOL[15]+'evaluating runs\n'+FEND)
@@ -317,6 +317,7 @@ def cl_arg():
             print(menutxt)
     ###NEW###
     if args.optimize:
+        '''
         print("evaluating...")
         #Checking if the stack exists as a txt file in the stacks directory
         if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
@@ -337,13 +338,36 @@ def cl_arg():
             STACK = json.load(stack)
 
         quit()
-        
-        
-        
-        
+        '''
+        print("evaluating...")
+        #Checking if the stack exists as a txt file in the stacks directory
+        if not os.path.exists("{}/stacks/{}.json".format(LOC,args.optimize[0])):
+            print("stack not found")
+            quit()
+        else:
+            if not os.path.exists("{}/stacks/{}".format(LOC,args.optimize[0])): 
+                print("creating directory {}/stacks/{}".format(LOC,args.optimize[0]))
+                os.mkdir("{}/stacks/{}".format(LOC,args.optimize[0]))
+            else:
+                print("directory for stack {} already exists, how do you want to proceed?".format(args.optimize[0]))
+                print("(1) delete it and run the optimization")
+                print("(2) quit")
+                val=int(input())
+                if val==1:
+                    print("deleting directory")
+                    shutil.rmtree("{}/stacks/{}".format(LOC,args.optimize[0]))
+                    os.mkdir("{}/stacks/{}".format(LOC,args.optimize[0]))
+                    #generate_stack_script(args.optimize[0])
+                else:
+                    print("exiting...")
+                    return 0
+        script=generate_stack_script(args.optimize[0])
+        print(shell("sbatch {}".format(script)))
+        return 0
 
 ############MAIN ADDITIONS################
     if args.evaluate:
+        ''' 
         print("evaluating...{}".format(args.evaluate[0]))
         #Checking if the stack exists as a txt file in the stacks directory
         if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
@@ -355,7 +379,7 @@ def cl_arg():
                 os.mkdir("{}/stacks/{}".format(LOC,args.evaluate[0]))
             else:
                 print("directory already exists")
-                
+        '''        
 
         #Loading the stack config
         #global STACK
@@ -388,7 +412,7 @@ def cl_arg():
             write_to_log("bms to run:{}\nbms to install: {}".format(run_bms,install_bms))
             #Installing the benchmarks
             for bm in install_bms:
-                write_to_log("Generating {} for {}".format(bm,pkg_type))
+                write_to_log("Generating {} configs  for {} packages".format(bm,pkg_type))
                 generate_configs(bm,pkg_type)
                 #loading the configs requires a reset
                 #TODO: Limit it to changed benchmark
@@ -500,12 +524,17 @@ def cl_arg():
                     table=[["bm run",*[elem[0] for elem in STACK["weights"][pkg_type][bm]]]]
                     for i in range(len(STACK["testing"][pkg][bm])):
                         line=[]
-                        if i==STACK["config"]["meta settings"]["[iterations]"]:
+                        if i==int(STACK["config"]["meta settings"]["[iterations]"]):
                             line.append("average")
                         else:
                             line.append("{} run {}".format(bm,str(i+1)))
+
+                        line.extend(STACK["testing"][pkg][bm][i])
+                        table.append(line)
                     write_to_log(tabulate(table,headers="firstrow",tablefmt="grid"))
                     write_to_log("\n")
+            
+            STACK["results"][pkg_type]=copy.deepcopy(STACK["testing"])
 
             #analyze benchmarks
             print("Analyzing result")
@@ -545,6 +574,7 @@ def best_pkg(pkg_type):
     #headers,avg_1,avg_2,ratio,weight,weighted ratio
     table=[[],[],[],[],[],[]]
     table[0].append("data")
+    table[4].append("weights")
     
     #print(STACK["weights"]["Compiler"].items())
     for bm,weight_list in STACK["weights"][pkg_type].items():
@@ -557,7 +587,7 @@ def best_pkg(pkg_type):
         table[4].extend(liste)
         table[0].extend([elem[0] for elem in weight_list])
 
-    write_to_log("headers:",json.dumps(table[0]))    
+    write_to_log("headers: {}".format(json.dumps(table[0])))
 
     print(total_weight)
     print(weights)
@@ -571,7 +601,7 @@ def best_pkg(pkg_type):
             score=0
             bms=[benchmark for benchmark in STACK["bms_for_package"][pkg_type]]
 
-            write_to_log("comparing {} and {}".format(best_pkg,pkg))
+            write_to_log("comparing {} and {}".format(pkg,best_pkg))
             table[1]=[pkg]
             table[2]=[best_pkg]
             table[3]=["ratio"]
@@ -580,11 +610,13 @@ def best_pkg(pkg_type):
             for index,bm in enumerate(bms):
                 for i in range(len(weights[index])):
                     
-                    val_best_pkg=STACK["testing"][best_pkg][bm][i][iterations]
-                    val_pkg=STACK["testing"][pkg][bm][i][iterations]
+                    #val_best_pkg=STACK["testing"][best_pkg][bm][i][iterations]
+                    #val_pkg=STACK["testing"][pkg][bm][i][iterations]
                     
-                    table[1].append(val_pkg)
-                    table[2].append(val_best_pkg)
+                    val_best_pkg=STACK["testing"][best_pkg][bm][iterations][i]
+                    val_pkg=STACK["testing"][pkg][bm][iterations][i]
+                    #table[1].append(val_pkg)
+                    #table[2].append(val_best_pkg)
                     ratio=0
                     w=0
 
@@ -601,6 +633,7 @@ def best_pkg(pkg_type):
                     table[1].append(val_pkg)
                     table[2].append(val_best_pkg)
                     table[3].append(ratio)
+
                     table[5].append(w_ratio)
 
             write_to_log(tabulate(table,headers="firstrow",tablefmt="grid"))
@@ -609,9 +642,9 @@ def best_pkg(pkg_type):
             score=score/total_weight
             if score>1:
                 best_pkg=pkg
-                write_to_log("{} achieved a better result than {} with a score of ".format(pkg,best_pkg,str(score)))
+                write_to_log("{} achieved a better result than {} with a score of {}".format(pkg,best_pkg,str(score)))
             else:
-                write_to_log("{} achieved a worse result than {} with a score of ".format(pkg,best_pkg,str(score)))
+                write_to_log("{} achieved a worse result than {} with a score of {}".format(pkg,best_pkg,str(score)))
 
             print(score,total_weight)
             #Compare the current with the best package
@@ -630,8 +663,17 @@ def get_averages(pkg,bm):
     #print(bm,"averag",STACK["testing"][pkg][bm][2])
     return res
 
-def read_val_from_result(file,str):
-    return float(file.split(str)[1].split("\n")[0])
+def read_val_from_result(file,s):
+    '''
+    print(file.split(s)[1] )
+    print("line after split:",s)
+    print(file.split(s)[1].split("\n")[0])
+    print("\nline after second split:")
+    print(file.split(s)[1].split("\n")[0].strip())
+    print("\nline after strip")
+    print("float :",float(file.split(s)[1].split("\n")[0].strip()))
+    '''
+    return float(file.split(s)[1].split("\n")[0])
 
 
 def analyze_results(res_dir,pkg_type,bm,pkg):
@@ -667,13 +709,16 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
     return res_list
 
 
-def generate_stack_script():
+def generate_stack_script(stack):
     with open(LOC+"/optimization_script.sh","w") as script:
         batchtxt=write_slurm_params(cfg_profiles[0][0],3)
-        batchtxt+='#SBATCH --job-name=stack_building '+'\n'
-        batchtxt+='#SBATCH --output=/dev/null\n'
-        batchtxt+="insert command here"
+        batchtxt+='#SBATCH --job-name={}_building\n'.format(stack)
+        batchtxt+='#SBATCH --output={}\n'.format(LOC+"/stacks/{}/{}.out".format(stack,stack))
+        batchtxt+='#SBATCH --error={}\n'.format(LOC+"/stacks/{}/{}.err".format(stack,stack))
+        batchtxt+="\n"
+        batchtxt+="python3 {}/sb.py -e {}\n".format(LOC,stack)
         script.write(batchtxt)
+    return LOC+"/optimization_script.sh"
 
 def write_to_log(txt):
     with open(STACK['log_file'],"a") as file:
@@ -1880,7 +1925,8 @@ def find_binary(profile, bench_id):
         if _ == -1:
             error_log('package {} seems to be unavailable! profile: '.format(profile[0][3])+profile[0][0], locals())
         else:
-            bin_path = ((bin_path[_:]).strip()+'/bin/')
+            #bin_path = ((bin_path[_:]).strip()+'/bin/')
+            bin_path = (bin_path[_:]).strip().split("\n")[0]+"/bin"
         return bin_path
     else:
         error_log('invalid syntax detected in '+profile[0][0]+', resulting spec: {} '.format(profile[0][3]), locals())
