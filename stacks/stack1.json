@@ -1,0 +1,183 @@
+{
+    "bms_for_package":{
+        "Compiler":["hpcc","hpcg"],
+        "MPI":["osu_latency","osu_bw","hpcg"],
+        "BLAS":["hpcc"]
+    },
+    "weights":{
+        "Compiler":{
+            "hpcc":[["StarSTREAM Triad Gb/s","StarSTREAM_Triad=",1],["StarRA GUPS","StarRandomAccess_GUPs=",1]],
+            "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",1]]
+        },
+        "MPI":{
+            "osu_latency":[["microsecs s1","1 ",-1],["microsecs s4096","4096 ",-5],["microsecs s4194304","4194304 ",-10]],
+            "osu_bw":[["Gb/s s1","1 ",1],["Gb/s s4096","4096 ",5],["Gb/s s4194304","4194304 ",10]],
+            "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",1]]
+        },
+        "BLAS":{
+            "hpcc":[["HPL Tflops","HPL_Tflops=",1],["StarDGEMM Gflops","StarDGEMM_Gflops=",1],["SingleDGEMM Gflops","SingleDGEMM_Gflops=",1]]
+        }
+    },
+
+    "results":{
+        "Compiler":{
+            "cmp1":{
+                "hpcc":[],
+                "hpcg":[]
+            }
+        }
+    },
+
+    "config":{
+        "meta settings":{
+            "[iterations]":"2",
+            "[aggregation: e.g. avg, max]":"avg"
+        },
+        "bm_version":{
+            "hpl":"2.3",
+            "osu":"7.2",
+            "hpcg":"3.1",
+            "hpcc":"1.5.0"
+            
+        },
+        "benchmark parameters":{
+            "hpl":{
+                "[0]":"HPL.out",
+                "[1]":"6",
+                "[#Matrizen]":"1",
+                "[Matrixgröße(n)]":"81792",
+                "[#Blöcke]":"1",
+                "[Blockgröße(n)]":"192",
+                "[Mapping: 0=row;1=column]":"0",
+                "[#Grids: PxQ]":"1",
+                "[Ps]":"6",
+                "[Qs]":"8",
+                "[Genauigkeit: <0 <=> aus]":"16.0",
+                "[2]":"1",
+                "[3]":"2",
+                "[4]":"1",
+                "[5]":"4",
+                "[6]":"1",
+                "[7]":"2",
+                "[8]":"1",
+                "[9]":"1",
+                "[10]":"1",
+                "[11]":"1",
+                "[12]":"1",
+                "[13]":"1",
+                "[14]":"2",
+                "[15]":"64",
+                "[16]":"0",
+                "[17]":"0",
+                "[18]":"1",
+                "[19]":"8"
+            },
+            "hpcg":{
+                "[problem size]":"16 16 16",
+                "[time target in s]":"180"
+            },
+            "hpcc":{
+                "[0]":"HPL.out",
+                "[1]":"6",
+                "[#Matrizen]":"1",
+                "[Matrixgrößen)]":"28800",
+                "[#Blöcke]":"1",
+                "[Blockgröße(n)]":"192",
+                "[Mapping: 0=row;1=column]":"0",
+                "[#Grids: PxQ]":"1",
+                "[Ps]":"6",
+                "[Qs]":"8",
+                "[Genauigkeit: <0 <=> aus]":"16.0",
+                "[2]":"1",
+                "[3]":"2",
+                "[4]":"1",
+                "[5]":"4",
+                "[6]":"1",
+                "[7]":"2",
+                "[8]":"1",
+                "[9]":"1",
+                "[10]":"1",
+                "[11]":"1",
+                "[12]":"1",
+                "[13]":"1",
+                "[14]":"2",
+                "[15]":"64",
+                "[16]":"0",
+                "[17]":"0",
+                "[18]":"1",
+                "[19]":"8",
+                "[##### This line (no. 32) is ignored (it serves as a separator). ######]":"0",
+                "[Number of additional problem sizes for PTRANS]":0,
+                "[values of N]":"0",
+                "[number of additional blocking sizes for PTRANS]":0,
+                "[values of NB]":"0"
+            }
+        },
+        "SLURM parameters":{
+            "[Partition]":"vl-parcio",
+            "[Nodes]":"2",
+            "[Prozesse]":"48",
+            "[Prozesse/Tasks per Node]":"24",
+            "[CPUs pro Prozess/Task]":"",
+            "[RAM in MB/CPU]":"",
+            "[Startpunkt, YYYY-MM-DD HH:MM:SS]":"",
+            "[Zeitlimit, DD-HH:MM:SS]":"",
+            "[Email an User]":"",
+            "[Email-Trigger, z.B. END,FAIL,TIME_LIMIT_80]":"",
+            "[Ziel/File für Output":"",
+            "[Ziel/File für Fehlr]":""
+        }
+
+    },
+    "stack":{
+        "Compiler":"",
+        "MPI":"",
+        "BLAS":""
+    },
+    "testing":{
+
+    },
+    "packages":{
+        "Compiler":{
+            "cmp1":{
+                "Name":"gcc",
+                "Version":"13.2.0"
+            },
+            "cmp2":{
+                "Name":"aocc",
+                "Version":"4.0.0"
+            }
+        },
+        "MPI":{
+            "mpi1":{
+                "Name":"mpich",
+                "Version":"4.1.2",
+                "Flags":"netmod=ofi"
+            },
+            "mpi2":{
+                "Name":"mpich",
+                "Version":"4.1.2",
+                "Flags":"netmod=tcp"
+            }
+        },
+        "BLAS":{
+            "blas1":{
+                "Name":"openblas",
+                "Version":"0.3.23",
+                "Flags":""
+            },
+            "blas2":{
+                "Name":"flexiblas",
+                "Version":"3.3.0",
+                "Flags":""
+            },
+	    "blas3":{
+                "Name":"amdblis",
+                "Version":"4.0",
+                "Flags":""
+            }
+
+        }
+
+    }
+}        
