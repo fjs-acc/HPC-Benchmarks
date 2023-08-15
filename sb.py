@@ -18,6 +18,10 @@ import json
 import copy
 import functools
 from tabulate import tabulate
+import matplotlib.pyplot as plt
+import matplotlib
+import pandas as pd
+
 
 import os
 import os.path
@@ -361,6 +365,8 @@ def cl_arg():
                 else:
                     print("exiting...")
                     return 0
+            os.mkdir("{}/stacks/{}/plots".format(LOC,args.optimize[0]))
+
         script=generate_stack_script(args.optimize[0])
         print(shell("sbatch {}".format(script)))
         return 0
@@ -534,7 +540,22 @@ def cl_arg():
                     write_to_log(tabulate(table,headers="firstrow",tablefmt="grid"))
                     write_to_log("\n")
             
-            STACK["results"][pkg_type]=copy.deepcopy(STACK["testing"])
+                STACK["results"][pkg_type]=copy.deepcopy(STACK["testing"])
+                for val_index,liste in enumerate(STACK["weights"][pkg_type][bm]):
+                    pre_df=[[pkg] for pkg in STACK["results"][pkg_type]]
+                    #t=["{} run {}".format(bm,a+1) for a in range(len(STACK["results"][pkg_type][pkg][bm]))]
+                    col=["Package",*["{} run {}".format(bm,a+1) for a in range(len(STACK["results"][pkg_type][pre_df[0][0]][bm])-1)]]
+                    col.append("{} results".format("avgerage"))
+                    xlabel="Package"
+                    ylabel=str(liste[0])
+                    title="{} - {} for {}".format(bm,liste[0],",".join([pkg for pkg in STACK["results"][pkg_type]]))
+                    figname="{}/stacks/{}/plots/plot_{}_{}_{}.png".format(LOC,args.evaluate[0],pkg_type,bm,val_index) #fix name for cluster
+                    for i,pkg in enumerate(STACK["results"][pkg_type]):
+                        pre_df[i].extend([l[val_index] for l in STACK["results"][pkg_type][pkg][bm]])
+                        #col.append(pkg)
+                    #print(pre_df)
+                    #print("col:",col)
+                    graph(pre_df,col,xlabel,ylabel,title,figname)
 
             #analyze benchmarks
             print("Analyzing result")
@@ -566,6 +587,23 @@ def cl_arg():
         menu()
     
 ###NEW FUNCTIONS###
+def graph(l,col,xlabel,ylabel,title,figname):
+    matplotlib.rcParams.update({'font.size': 22})
+    df = pd.DataFrame(l,columns=col)
+    # view data
+    #print(df)
+  
+    # plot grouped bar chart
+    ax=df.plot(x=col[0],kind='bar',stacked=False,title=title,rot=0,figsize=(20, 12))
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.legend(bbox_to_anchor=(1,1), loc="upper left",fontsize='small')
+    #ax.set_figwidth(14)
+    #ax.set_figheight(14)
+    #ax.legend(bbox_to_anchor=(1.0, 1.0),fontsize='small')
+    #plt.show()
+    ax.figure.savefig(figname,bbox_inches='tight')  # saves the current figure
+
 def best_pkg(pkg_type):
     best_pkg={}
     total_weight=0.0
