@@ -6,16 +6,16 @@
     },
     "weights":{
         "Compiler":{
-            "hpcc":[["StarSTREAM Triad Gb/s","StarSTREAM_Triad=",1],["StarRA GUPS","StarRandomAccess_GUPs=",1]],
+            "hpcc":[["StarSTREAM Triad Gb/s","StarSTREAM_Triad=",2],["StarRA GUPS","StarRandomAccess_GUPs=",3]],
             "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",1]]
         },
         "MPI":{
-            "osu_latency":[["microsecs s1","1 ",-1],["microsecs s4096","4096 ",-5],["microsecs s4194304","4194304 ",-10]],
-            "osu_bw":[["Gb/s s1","1 ",1],["Gb/s s4096","4096 ",5],["Gb/s s4194304","4194304 ",10]],
-            "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",1]]
+            "osu_latency":[["microsecs s8","8 ",-10],["microsecs s16384","16384 ",-4],["microsecs s4194304","4194304 ",-2]],
+            "osu_bw":[["Gb/s s8","8 ",10],["Gb/s s16384","16384 ",4],["Gb/s s4194304","4194304 ",2]],
+            "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",2]]
         },
         "BLAS":{
-            "hpcc":[["HPL Tflops","HPL_Tflops=",1],["StarDGEMM Gflops","StarDGEMM_Gflops=",1],["SingleDGEMM Gflops","SingleDGEMM_Gflops=",1]]
+            "hpcc":[["HPL Tflops","HPL_Tflops=",1],["StarDGEMM Gflops","StarDGEMM_Gflops=",3],["SingleDGEMM Gflops","SingleDGEMM_Gflops=",2]]
         }
     },
 
@@ -73,14 +73,14 @@
                 "[19]":"8"
             },
             "hpcg":{
-                "[problem size]":"16 16 16",
-                "[time target in s]":"180"
+                "[problem size]":"144 120 120",
+                "[time target in s]":"300"
             },
             "hpcc":{
                 "[0]":"HPL.out",
                 "[1]":"6",
                 "[#Matrizen]":"1",
-                "[Matrixgrößen)]":"28800",
+                "[Matrixgrößen)]":"81792",
                 "[#Blöcke]":"1",
                 "[Blockgröße(n)]":"192",
                 "[Mapping: 0=row;1=column]":"0",
