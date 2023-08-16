@@ -321,28 +321,6 @@ def cl_arg():
             print(menutxt)
     ###NEW###
     if args.optimize:
-        '''
-        print("evaluating...")
-        #Checking if the stack exists as a txt file in the stacks directory
-        if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
-            print("stack not found")
-            quit()
-        else:
-            if not os.path.exists("{}/stacks/{}".format(LOC,args.evaluate[0])): 
-                print("creating directory {}/stacks/{}".format(LOC,args.evaluate[0]))
-                os.mkdir("{}/stacks/{}".format(LOC,args.evaluate[0]))
-            else:
-                print("directory already exists")
-                
-
-        #Loading the stack config
-        #global STACK
-        STACK={}        
-        with open("{}/stacks/{}.json".format(LOC,args.evaluate[0])) as stack:
-            STACK = json.load(stack)
-
-        quit()
-        '''
         print("evaluating...")
         #Checking if the stack exists as a txt file in the stacks directory
         if not os.path.exists("{}/stacks/{}.json".format(LOC,args.optimize[0])):
@@ -373,19 +351,6 @@ def cl_arg():
 
 ############MAIN ADDITIONS################
     if args.evaluate:
-        ''' 
-        print("evaluating...{}".format(args.evaluate[0]))
-        #Checking if the stack exists as a txt file in the stacks directory
-        if not os.path.exists("{}/stacks/{}.json".format(LOC,args.evaluate[0])):
-            print("stack not found")
-            quit()
-        else:
-            if not os.path.exists("{}/stacks/{}".format(LOC,args.evaluate[0])): 
-                print("creating directory {}/stacks/{}".format(LOC,args.evaluate[0]))
-                os.mkdir("{}/stacks/{}".format(LOC,args.evaluate[0]))
-            else:
-                print("directory already exists")
-        '''        
 
         #Loading the stack config
         #global STACK
@@ -433,7 +398,6 @@ def cl_arg():
                 
                 if output.find("Submitted batch job ")>-1:
                     jobid=42
-                    #write_to_log("Installation started, waiting for job {} to finish")
                     jobid=output.split("Submitted batch job ")[1]
                     jobid=jobid.split("\n")[0]
                     write_to_log("Installation started, waiting for job {} to finish".format(jobid))
@@ -444,7 +408,6 @@ def cl_arg():
                     quit()
 
 
-                #print("executing command {}".format(cmd))
 
                 cfg_profiles[tag_id_switcher(bm)]=[]
                 for _ in range(len(get_names(BENCH_PTHS[tag_id_switcher(bm)]))):       
@@ -459,11 +422,7 @@ def cl_arg():
                 #necessary to remove the specs through mapping
                 write_to_log("removing uninstalled configs")
                 a=list(map(remove_uninstalled_spec,unavailable_configs))
-                #print("{} {} are available {}".format(bm,pkg_type,unavailable_configs))
-                #print("available specs: {}".format(list(STACK["testing"].keys())))
                 
-                #print(unavailable_configs)
-                #print(a)
 
             res_dir="{}/stacks/{}".format(LOC,args.evaluate[0])
             try:
@@ -476,16 +435,6 @@ def cl_arg():
                 write_to_log("running benchmarks for {}".format(list_to_test))
                 #Installing the generated benchmark
                 
-                #cmd="python3 {}/sb.py -w {} {}".format(LOC,bm,",".join(list_to_test))
-                #print(cmd+"\n\n")
-                #output=shell(cmd)
-                #path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
-                #print(path)
-                #path="es@".join(path)
-                #print(path)
-                #path=LOC+path.split(LOC)[1]
-                
-                #print(path)
 
                 cmd="python3 {}/sb.py -r {} {}".format(LOC,bm,",".join(list_to_test))
                 write_to_log(cmd)
@@ -504,23 +453,17 @@ def cl_arg():
                 write_to_log(cmd)
                 output=shell(cmd)
 
-                #shutil.move(path,"{}/stacks/{}/{}".format(LOC,args.evaluate[0],pkg_type))
-                #print(cmd+"\n")
 
                 for pkg in STACK["testing"]:
                     if bm.find("osu")>-1:
-                        #print(analyze_results(path,pkg_type,bm,pkg))
                         write_to_log(path+"/{}_cfg_{}".format("osu",pkg))
-                        #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
                         print(analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg))
                         STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg)
                     
                         STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
 
                     else:
-                        #print(analyze_results(path,pkg_type,bm,pkg))
                         write_to_log(path+"/{}_cfg_{}".format(bm,pkg))
-                        #write_to_log(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))            
                         print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
                         STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
                     
@@ -543,7 +486,6 @@ def cl_arg():
                 STACK["results"][pkg_type]=copy.deepcopy(STACK["testing"])
                 for val_index,liste in enumerate(STACK["weights"][pkg_type][bm]):
                     pre_df=[[pkg] for pkg in STACK["results"][pkg_type]]
-                    #t=["{} run {}".format(bm,a+1) for a in range(len(STACK["results"][pkg_type][pkg][bm]))]
                     col=["Package",*["{} run {}".format(bm,a+1) for a in range(len(STACK["results"][pkg_type][pre_df[0][0]][bm])-1)]]
                     col.append("{} results".format("avgerage"))
                     xlabel="Package"
@@ -552,21 +494,28 @@ def cl_arg():
                     figname="{}/stacks/{}/plots/plot_{}_{}_{}.png".format(LOC,args.evaluate[0],pkg_type,bm,val_index) #fix name for cluster
                     for i,pkg in enumerate(STACK["results"][pkg_type]):
                         pre_df[i].extend([l[val_index] for l in STACK["results"][pkg_type][pkg][bm]])
-                        #col.append(pkg)
-                    #print(pre_df)
-                    #print("col:",col)
+                        
                     graph(pre_df,col,xlabel,ylabel,title,figname)
 
-            #analyze benchmarks
             print("Analyzing result")
-            #write_to_log(json.dumps(STACK,indent=2))
 
             stack_pkg=best_pkg(pkg_type)
             write_to_log("best package of type {}: {}".format(pkg_type,stack_pkg))
             STACK["stack"][pkg_type]=STACK["testing"][stack_pkg]
 
-            print(json.dumps(STACK,indent=2))        
-            
+        print(json.dumps(STACK,indent=2))        
+        write_to_log("The final stack consists of the following packages:")
+        for pkg_type,pkg in STACK["stack"].items():
+            s="{}: ".format(pkg_type)
+            for key,value in pkg.items():
+                if key=="Name":
+                    s+=value
+                if key=="Version":
+                    s+="@{}".format(value)
+                if key=="Flags":
+                    s+=" {}".format(value)
+            write_to_log(s)
+
 
 
         
