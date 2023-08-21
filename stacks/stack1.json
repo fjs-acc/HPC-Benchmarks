@@ -18,16 +18,6 @@
             "hpcc":[["HPL Tflops","HPL_Tflops=",1],["StarDGEMM Gflops","StarDGEMM_Gflops=",3],["SingleDGEMM Gflops","SingleDGEMM_Gflops=",2]]
         }
     },
-
-    "results":{
-        "Compiler":{
-            "cmp1":{
-                "hpcc":[],
-                "hpcg":[]
-            }
-        }
-    },
-
     "config":{
         "meta settings":{
             "[iterations]":"2",
@@ -127,15 +117,11 @@
             "[Ziel/File für Output":"",
             "[Ziel/File für Fehlr]":""
         }
-
     },
     "stack":{
         "Compiler":"",
         "MPI":"",
         "BLAS":""
-    },
-    "testing":{
-
     },
     "packages":{
         "Compiler":{

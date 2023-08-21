@@ -357,19 +357,14 @@ def cl_arg():
         STACK={}        
         with open("{}/stacks/{}.json".format(LOC,args.evaluate[0])) as stack:
             STACK = json.load(stack)
+            STACK["results"]={}
+            STACK["testing"]={}
             STACK["log_file"]=LOC+"/stacks/{}/log.txt".format(args.evaluate[0])
             with open(STACK["log_file"],"w") as log:
-                log.write("booting\n")
-            #generate_stack_script()
+                log.write("booting...\n\n")
 
-        #TODO: swap for candidates
         for pkg_type in STACK["stack"]:
-        
-            #if pkg_type=="MPI" or pkg_type=="BLAS":
-            #    quit()
-
-
-            write_to_log("Testing package type {}".format(pkg_type))
+            write_to_log("\nTesting package type {}\n".format(pkg_type))
             install_bms=set()
             STACK["testing"]=copy.deepcopy(STACK["packages"][pkg_type])
             run_bms=set(STACK["bms_for_package"][pkg_type])
@@ -379,11 +374,10 @@ def cl_arg():
                 else:
                     install_bms.add(bm)
 
-            print("bms to run:{}\nbms to install: {}".format(run_bms,install_bms))
             write_to_log("bms to run:{}\nbms to install: {}".format(run_bms,install_bms))
             #Installing the benchmarks
             for bm in install_bms:
-                write_to_log("Generating {} configs  for {} packages".format(bm,pkg_type))
+                write_to_log("Generating {} configs  for {} packages...".format(bm,pkg_type))
                 generate_configs(bm,pkg_type)
                 #loading the configs requires a reset
                 #TODO: Limit it to changed benchmark
@@ -432,7 +426,7 @@ def cl_arg():
             
             for bm in run_bms:
                 list_to_test=list(STACK["testing"].keys())
-                write_to_log("running benchmarks for {}".format(list_to_test))
+                write_to_log("\nrunning benchmarks for {}".format(list_to_test))
                 #Installing the generated benchmark
                 
 
@@ -441,10 +435,9 @@ def cl_arg():
                 output=shell(cmd)
                 jobid=output.split("Submitted batch job ")[1]
                 jobid=jobid.split("\n")[0]
-                write_to_log("waiting for benchmark run {}".format(jobid))
+                write_to_log("waiting for benchmark run {}...".format(jobid))
                 wait_for_job(jobid)
-                write_to_log("benchmark run completed")
-                write_to_log("copying the results")
+                write_to_log("benchmark run completed,copying results")
                 
                 path=output.split("script building completed:\n")[1].split("/batch.sh")[0].split("un@")
                 path="es@".join(path)
@@ -456,20 +449,20 @@ def cl_arg():
 
                 for pkg in STACK["testing"]:
                     if bm.find("osu")>-1:
-                        write_to_log(path+"/{}_cfg_{}".format("osu",pkg))
-                        print(analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg))
+                        #write_to_log(path+"/{}_cfg_{}".format("osu",pkg))
+                        #print(analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg))
                         STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format("osu",pkg),pkg_type,bm,pkg)
                     
                         STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
 
                     else:
-                        write_to_log(path+"/{}_cfg_{}".format(bm,pkg))
-                        print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
+                        #write_to_log(path+"/{}_cfg_{}".format(bm,pkg))
+                        #print(analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg))
                         STACK["testing"][pkg][bm]=analyze_results(path+"/{}_cfg_{}".format(bm,pkg),pkg_type,bm,pkg)
                     
                         STACK["testing"][pkg][bm].append(get_averages(pkg,bm))
 
-                    write_to_log("Results of {}, type {}, benchmark {}".format(pkg,pkg_type,bm))
+                    write_to_log("\nResults of {}, type {}, benchmark {}:".format(pkg,pkg_type,bm))
                     table=[["bm run",*[elem[0] for elem in STACK["weights"][pkg_type][bm]]]]
                     for i in range(len(STACK["testing"][pkg][bm])):
                         line=[]
@@ -497,10 +490,10 @@ def cl_arg():
                         
                     graph(pre_df,col,xlabel,ylabel,title,figname)
 
-            print("Analyzing result")
+            write_to_log("Analyzing results...")
 
             stack_pkg=best_pkg(pkg_type)
-            write_to_log("best package of type {}: {}".format(pkg_type,stack_pkg))
+            write_to_log("best package of type {}: {}\n".format(pkg_type,stack_pkg))
             STACK["stack"][pkg_type]=STACK["testing"][stack_pkg]
 
         print(json.dumps(STACK,indent=2))        
@@ -566,22 +559,22 @@ def best_pkg(pkg_type):
     #print(STACK["weights"]["Compiler"].items())
     for bm,weight_list in STACK["weights"][pkg_type].items():
         liste=[elem[2] for elem in weight_list]
-        print(liste)
+        #print(liste)
         weights.append(liste)
-        print(weights)
+        #print(weights)
         total_weight=functools.reduce(lambda s,b:s+abs(b),liste,total_weight)
 
         table[4].extend(liste)
         table[0].extend([elem[0] for elem in weight_list])
 
-    write_to_log("headers: {}".format(json.dumps(table[0])))
+    #write_to_log("headers: {}".format(json.dumps(table[0])))
 
-    print(total_weight)
-    print(weights)
-    print("comparing")
+    #print(total_weight)
+    #print(weights)
+    #print("comparing")
     iterations=int(STACK["config"]["meta settings"]["[iterations]"])
     for pkg in STACK["testing"]:
-        print(pkg)
+        #print(pkg)
         if best_pkg=={}:
             best_pkg=pkg
         else:
@@ -607,7 +600,7 @@ def best_pkg(pkg_type):
                     ratio=0
                     w=0
 
-                    print(bm,val_pkg,val_best_pkg,weights[index][i])
+                    #print(bm,val_pkg,val_best_pkg,weights[index][i])
                     if weights[index][i]<0:
                         ratio=val_best_pkg/val_pkg
                     else:
@@ -633,19 +626,19 @@ def best_pkg(pkg_type):
             else:
                 write_to_log("{} achieved a worse result than {} with a score of {}".format(pkg,best_pkg,str(score)))
 
-            print(score,total_weight)
+            #print(score,total_weight)
             #Compare the current with the best package
 
-    print(best_pkg)
+    #print(best_pkg)
 
-    print(total_weight)
-    print("weights",weights)
+    #print(total_weight)
+    #print("weights",weights)
     return best_pkg
 
 def get_averages(pkg,bm):
-    print(pkg,bm)
+    #print(pkg,bm)
     cur_list=STACK["testing"][pkg][bm]
-    print(cur_list)
+    #print(cur_list)
     res=list(map(lambda i:functools.reduce(lambda a,b:a+b[i], cur_list,0)/len(cur_list),[i for i in range(len(cur_list[0]))]))
     #print(bm,"averag",STACK["testing"][pkg][bm][2])
     return res
@@ -682,8 +675,8 @@ def analyze_results(res_dir,pkg_type,bm,pkg):
     elif benchmark == "osu":
         lines=["1","16"]'''
     lines=[elem[1] for elem in STACK["weights"][pkg_type][bm]]
-    print("reading the following lines:")
-    print(lines)
+    #print("reading the following lines:")
+    #print(lines)
 
 
     for i in range(int(STACK["config"]["meta settings"]["[iterations]"])):
