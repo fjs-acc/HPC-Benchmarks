@@ -1,41 +1,31 @@
 {
     "bms_for_package":{
         "Compiler":["hpcc","hpcg"],
-        "MPI":["osu_latency","osu_bandwidth","hpcg"],
+        "MPI":["osu_latency","osu_bw","hpcg"],
         "BLAS":["hpcc"]
     },
     "weights":{
         "Compiler":{
-            "hpcc":[],
-            "hpcg":[]
+            "hpcc":[["StarSTREAM Triad Gb/s","StarSTREAM_Triad=",2],["StarRA GUPS","StarRandomAccess_GUPs=",3]],
+            "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",1]]
         },
         "MPI":{
-            "osu_latency":[],
-            "osu_bandwidth":[],
-            "hpcg":[]
+            "osu_latency":[["microsecs s8","8 ",-10],["microsecs s16384","16384 ",-4],["microsecs s4194304","4194304 ",-2]],
+            "osu_bw":[["Gb/s s8","8 ",10],["Gb/s s16384","16384 ",4],["Gb/s s4194304","4194304 ",2]],
+            "hpcg":[["HPCG Gflops","Final Summary::HPCG result is VALID with a GFLOP/s rating of=",2]]
         },
         "BLAS":{
-            "hpcc":[]
+            "hpcc":[["HPL Tflops","HPL_Tflops=",1],["StarDGEMM Gflops","StarDGEMM_Gflops=",3],["SingleDGEMM Gflops","SingleDGEMM_Gflops=",2]]
         }
     },
-
-    "results":{
-        "Compiler":{
-            "cmp1":{
-                "hpcc":[],
-                "hpcg":[]
-            }
-        }
-    },
-
     "config":{
         "meta settings":{
-            "[iterations]":2,
+            "[iterations]":"2",
             "[aggregation: e.g. avg, max]":"avg"
         },
         "bm_version":{
             "hpl":"2.3",
-            "osu":"5.9",
+            "osu":"7.2",
             "hpcg":"3.1",
             "hpcc":"1.5.0"
             
@@ -73,14 +63,14 @@
                 "[19]":"8"
             },
             "hpcg":{
-                "[problem size]":"280 280 280",
-                "[time target in s]":"300s"
+                "[problem size]":"144 120 120",
+                "[time target in s]":"300"
             },
             "hpcc":{
                 "[0]":"HPL.out",
                 "[1]":"6",
                 "[#Matrizen]":"1",
-                "[Matrixgröße(n)]":"81792",
+                "[Matrixgrößen)]":"81792",
                 "[#Blöcke]":"1",
                 "[Blockgröße(n)]":"192",
                 "[Mapping: 0=row;1=column]":"0",
@@ -118,46 +108,42 @@
             "[Nodes]":"2",
             "[Prozesse]":"48",
             "[Prozesse/Tasks per Node]":"24",
-            "[CPUs pro Prozess/Task]":0,
-            "[RAM in MB/CPU]":0,
-            "[Startpunkt, YYYY-MM-DD HH:MM:SS]":0,
-            "[Zeitlimit, DD-HH:MM:SS]":0,
-            "[Email an User]":0,
-            "[Email-Trigger, z.B. END,FAIL,TIME_LIMIT_80]":0,
-            "[Ziel/File für Output]":0,
-            "[Ziel/File für Fehler]":0
+            "[CPUs pro Prozess/Task]":"",
+            "[RAM in MB/CPU]":"",
+            "[Startpunkt, YYYY-MM-DD HH:MM:SS]":"",
+            "[Zeitlimit, DD-HH:MM:SS]":"",
+            "[Email an User]":"",
+            "[Email-Trigger, z.B. END,FAIL,TIME_LIMIT_80]":"",
+            "[Ziel/File für Output":"",
+            "[Ziel/File für Fehlr]":""
         }
-
     },
     "stack":{
         "Compiler":"",
         "MPI":"",
         "BLAS":""
     },
-    "testing":{
-
-    },
     "packages":{
         "Compiler":{
             "cmp1":{
                 "Name":"gcc",
-                "Version":"12.1.0"
+                "Version":"13.2.0"
             },
             "cmp2":{
                 "Name":"aocc",
-                "Version":"3.2.0"
+                "Version":"4.0.0"
             }
         },
         "MPI":{
             "mpi1":{
-                "Name":"openmpi",
-                "Version":"4.1.5",
-                "Flags":""
+                "Name":"mpich",
+                "Version":"4.1.2",
+                "Flags":"netmod=ofi"
             },
             "mpi2":{
                 "Name":"mpich",
                 "Version":"4.1.2",
-                "Flags":""
+                "Flags":"netmod=tcp"
             }
         },
         "BLAS":{
@@ -170,7 +156,13 @@
                 "Name":"flexiblas",
                 "Version":"3.3.0",
                 "Flags":""
+            },
+	    "blas3":{
+                "Name":"amdblis",
+                "Version":"4.0",
+                "Flags":""
             }
+
         }
 
     }
